@@ -1,0 +1,177 @@
+/* Global */
+:root {
+  /* Color */
+  --color-white: #ffffff;
+  --color-light-white: #eeeeee;
+  --color-dark-white: #bdbdbd;
+  --color-dark-grey: #4d4d4d;
+  --color-grey: #616161;
+  --color-light-grey: #7c7979;
+  --color-lightest-grey: #dddddd;
+  --color-blue: #1f65ea;
+  --color-light-blue: #2d82fe;
+  --color-deep-blue: #0735df;
+  --color-navy: #2a3450;
+  --color-blue-blue: #0e3cb9;
+  --color-black: #121212;
+
+  /* Font size */
+  --font-large: 48px;
+  --font-medium: 28px;
+  --font-regular: 18px;
+  --font-small: 16px;
+  --font-micro: 14px;
+
+  /* Font weight */
+  --weight-bold: 700;
+  --weight-semi-bold: 600;
+  --weight-regular: 400;
+
+  /* Size */
+  --size--border-radius: 4px;
+
+  /* Animation */
+  --animation-duration: 300ms;
+}
+
+/* Universal tags */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", san-serif;
+  cursor: default;
+  background-color: var(--color-black);
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  border: 0.5px solid var(--color-light-grey);
+  background-color: #f4f7f8;
+  margin: 5px auto;
+  padding: 10px;
+  font-size: var(--font-regular);
+  height: 40px;
+  border-radius:  var(--size--border-radius);
+}
+
+#navbar {
+  background-color: #1f1a24;
+  color: #dddddd;
+  width: 100%;
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05);
+}
+
+#title__nav {
+  font-size: var(--font-regular);
+}
+
+nav {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+}
+
+
+
+
+.container {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 50px;
+  max-width: 1200px;
+  margin: 50px auto;
+  color: white;
+  text-align: center;
+}
+
+#submit__input {
+  padding: 0;
+  border-radius: 4px;
+  width: 241px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  background-color: var(--color-light-blue);
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+
+#cam-test__button {
+  width: 241px;
+  margin: 5px;
+  height: 40px;
+  line-height: 40px;
+  font-size: var(--font-small);
+  border-radius: var(--size--border-radius);
+  color: var(--color-deep-blue);
+  border: none;
+  padding: 0;
+  background-color: #f4f7f8;
+}
+
+#myCam {
+  margin: 0 auto;
+  width: 100%;
+  height: 80%;
+}
+
+.container-cam {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.container-cam p {
+  top: 20%;
+  color: white;
+  left: 10%;
+}
+
+.container-cam buttonfrm {
+  width: 241px;
+  margin: 10px 0 30px 0;
+  height: 40px;
+  line-height: 40px;
+  font-size: var(--font-small);
+  border-radius: var(--size--border-radius);
+  color: var(--color-white);
+  border: none;
+  padding: 0;
+  background-color: var(--color-blue);
+}

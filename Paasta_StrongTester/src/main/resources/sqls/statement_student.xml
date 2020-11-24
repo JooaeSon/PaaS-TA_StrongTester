@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.min.hb.student">
+
+	<!-- 1.학생 정보 출력(학번, 이름, 이메일, 학과, 응시 여부)-->
+	<select id="StudentInfoSelect" resultType="stdDto">
+		SELECT STUDENT_CODE,
+		STUDENT_DEPTM, STUDENT_NAME,
+		STUDENT_EMAIL, TEST_FLAG
+		FROM STUDENT
+		WHERE
+		TEST_CODE='A033212' AND USER_ID='SSUIT'
+	</select>
+
+	<!-- 2.메일 전송 버튼을 누르는 순간 UUID가 생성 -->
+	<update id="MakeUUID" parameterType="stdDto">
+		UPDATE STUDENT SET STUDENT_UUID=#{student_uuid}
+		WHERE STUDENT_CODE=#{student_code} AND TEST_CODE='A033212' AND USER_ID='SSUIT'
+	</update>
+	
+	<!-- 3.메일에 보낼 기본 정보 가져오기 -->
+	<select id="MailBasicInfo" parameterType="java.lang.String" resultType="stdDto">
+		SELECT STUDENT_CODE, TEST_CODE, USER_ID, STUDENT_DEPTM,
+		STUDENT_NAME, STUDENT_EMAIL, STUDENT_UUID, TEST_LINK
+		FROM STUDENT
+		WHERE USER_ID='SSUIT' AND TEST_CODE='A033212' AND STUDENT_CODE=#{student_code}
+	</select>
+	
+	<!--4.수험자 시험응시 응시로그인 확인(학번, 이름, UUID)-->
+	<select id="TestLogin" parameterType="stdDto" resultType="stdDto">
+		SELECT STUDENT_CODE, STUDENT_NAME, STUDENT_UUID
+		FROM STUDENT
+		WHERE USER_ID='SSUIT' AND TEST_CODE='A033212'
+		AND STUDENT_NAME=#{student_name} AND STUDENT_CODE=#{student_code} AND STUDENT_UUID=#{student_uuid}
+	</select>
+	
+	<!-- 5. IP 정보 입력(응시로그인하는 순간)-->
+	<update id="InputStdIp" parameterType="java.util.Map">
+		UPDATE STUDENT SET STUDENT_IP=#{student_ip}
+		WHERE USER_ID='SSUIT' AND TEST_CODE='A033212' 
+		AND STUDENT_CODE=#{student_code} AND TEST_FLAG='N'
+	</update>
+	
+	<!-- 6.시험 응시 여부 선행 확인-->
+	<select id="ChkTestFlag" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT TEST_FLAG
+		FROM STUDENT
+		WHERE USER_ID='SSUIT' AND TEST_CODE='A033212'
+		AND STUDENT_CODE=#{student_code}
+	</select>
+	
+	<!-- 7.시험응시 여부 'Y'로 갱신-->
+	<update id="UpdateTestFlag" parameterType="java.lang.String">
+		UPDATE STUDENT SET TEST_FLAG='Y'
+		WHERE USER_ID='SSUIT' AND TEST_CODE='A033212'
+		AND STUDENT_CODE=#{student_code}
+	</update>
+	
+	<!-- 8. 답안 저장: 응시자가 시험 본 답안을 저장-->
+	<update id="StoreAnswer" parameterType="java.util.Map">
+		UPDATE STUDENTANSWER SET STUDENT_ANSWER=#{student_answer}, STUDENT_SCORE=#{student_score}
+		WHERE USER_ID='SSUIT' AND TEST_CODE='A033212'
+		AND STUDENT_CODE=#{student_code} AND TEST_NUM=#{test_num}
+	</update>
+	
+	<!-- 9.시험 세부사항 조회: 이름, 학번, 학과, IP, 이메일, 총점 -->
+	<select id="StudentDetail" parameterType="java.lang.String" resultType="stdDto">
+		SELECT STUDENT_NAME, STUDENT_CODE, 
+		STUDENT_DEPTM, STUDENT_IP, STUDENT_EMAIL
+		FROM STUDENT
+		WHERE USER_ID='SSUIT' AND TEST_CODE ='A033212'
+		AND STUDENT_CODE =#{student_code}
+    </select>
+    
+    <!-- 10.시험 총점 구하기 -->
+    <select id="StudentSumPoint" parameterType="java.lang.String" resultType="java.lang.String">
+	    SELECT SUM(STUDENT_SCORE) FROM STUDENTANSWER
+		WHERE USER_ID='SSUIT' AND TEST_CODE ='A033212'
+		AND STUDENT_CODE=#{student_code}
+	</select>
+	
+	<!--11.답안 테이블 답안 및 점수 조회-->
+	<select id="StudentAnswerInfo" parameterType="java.util.Map" resultType="stdAswDto">
+		SELECT TEST_NUM, STUDENT_SCORE, STUDENT_ANSWER
+		FROM STUDENTANSWER
+		WHERE USER_ID='SSUIT' AND TEST_CODE ='A033212'
+		AND STUDENT_CODE = #{student_code}
+	</select>
+	
+	<!-- 12.비디오 칼럼 새로 생성 -->
+	
+	<insert id="InsertVideo" parameterType="java.util.Map">
+		INSERT INTO STUDENTCAPTURE (STUDENT_CODE, TEST_CODE, USER_ID, CAPTURE_CONTENT)
+		VALUES(#{student_code}, 'A033212', 'SSUIT', #{capture_content})
+	</insert>
+	
+	<!-- 13.수험자 개인 캡처 비디오 클립 링크 조회 -->
+	
+	<select id="SelectVideoLink" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT CAPTURE_CONTENT FROM STUDENTCAPTURE
+		WHERE TEST_CODE='A033212' AND USER_ID='SSUIT' AND STUDENT_CODE=#{student_code}
+	</select>
+</mapper>
