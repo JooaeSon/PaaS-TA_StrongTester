@@ -28,13 +28,13 @@
 
 
 <body>
-   
+
    <nav id="navbar">
-    <div>
-        <img id="logoImg" src="img/logoImg.png" width="30px" >
-      <a href="home.do" id="logo">STRONG TESTER</a>
-    </div>
-   
+      <div>
+         <img id="logoImg" src="img/logoImg.png" width="30px"> <a
+            href="home.do" id="logo">STRONG TESTER</a>
+      </div>
+
       <ul class="navbar__menu">
          <li class="navbar__menu__item"><a href="master-info.html">내
                정보</a></li>
@@ -44,30 +44,59 @@
    <section class="section">
       <h6>숭실대학교</h6>
       <h2>수업명: 인공지능</h2>
-      <div class="setting__buttons">
-         <button>삭제</button>
-         <button>수정</button>
-         <button>추가</button>
-      </div>
-   <form id="frm" method="POST">
-      <table class="student__table table table-striped table-bordered"
+
+      <article>
+
+         <div id="set__time">
+            <button id="set-time__button">시험 시간 설정</button>
+         </div>
+         <div id="student__add__article">
+
+            <div>
+               <form id="student__inputs">
+
+                  <input type="number" id="std-num__input" class="student__input"
+                     placeholder="학번" required> <input type="text"
+                     id="std-major__input" class="student__input" placeholder="학과"
+                     required> <input type="text" id="std-name__input"
+                     class="student__input" placeholder="이름" required> <input
+                     type="email" id="std-email__input" class="student__input"
+                     placeholder="이메일" required>
+
+                  <button id="student-add__button">
+                     <i class="fas fa-plus-square"></i>
+                  </button>
+
+               </form>
+            </div>
+         </div>
+      </article>
+
+
+
+
+
+      <form id="frm" method="POST">
+         <table class="student__table table table-striped table-bordered"
             id="allTable">
 
             <thead>
                <tr>
                   <th><input type="checkbox" id="select__all" /></th>
-                  <th>학번</th>
+                  <th width="100">학번</th>
                   <th>학과</th>
                   <th>이름</th>
                   <th>이메일</th>
-                  <th>응시여부</th>
-                  <th>세부사항</th>
+                  <th width="100">응시여부</th>
+                  <th width="100">세부사항</th>
+                  <th colspan="2">Actions</th>
                </tr>
             </thead>
             <tbody id="tbody">
+
                <c:forEach var="stdto" items="${stdAllList}" varStatus="vs">
-                  
-                 <tr>
+
+                  <tr>
                      <td><input type="checkbox" class="checkbox" name="std_id"
                         value="${stdto.student_code}" /></td>
                      <td>${stdto.student_code}</td>
@@ -75,13 +104,24 @@
                      <td>${stdto.student_name}</td>
                      <td>${stdto.student_email}</td>
                      <td class="data-flag">${stdto.test_flag}</td>
-                      <td>
-                     <!-- <button class="student__button showInfo" value="${stdto.student_code}">조회</button> -->
-                        <input type="submit"  onclick="checkIt(${stdto.student_code});" class="student__button showInfo" name="stdId" value="${stdto.student_code}"/></td> 
-                     
+                     <td>
+                        <!-- <button class="student__button showInfo" value="${stdto.student_code}">조회</button> -->
+                        <input type="submit" onclick="checkIt(${stdto.student_code});"
+                        class="student__button showInfo" name="stdId"
+                        value="${stdto.student_code}" />
+                     </td>
+                     <td><button type="button" class="setting__buttons edit__btn"
+                           value="${stdto.student_code}">
+                           <i class="fas fa-edit"></i>
+                        </button></td>
+                     <td><button class="setting__buttons delete__btn"
+                           type="button" value="${stdto.student_code}">
+                           <i class="fas fa-trash-alt"></i>
+                        </button></td>
+
                   </tr>
-                  
-                  
+
+
                </c:forEach>
             </tbody>
          </table>
@@ -92,8 +132,64 @@
                   value="이메일 전송" />
             </div>
          </div>
-            </form>
+      </form>
    </section>
+
+   <section class="modal">
+      <article class="modal__content">
+         <h2>시험 시간 설정</h2>
+
+         <div>
+            <button id="close__button" class="close__button" type="button">X</button>
+            <label for="">시작</label> <input id="start-time"
+               type="datetime-local"> <label for="">종료</label> <input
+               id="end-time" type="time">
+            <div>
+               <button id="confirm-time__button" class="confirm__button">확인</button>
+
+            </div>
+
+         </div>
+      </article>
+   </section>
+
+
+   <!-- 학생 수정 모달-->
+   <section class="edit__modal">
+      <article class="edit__modal__content">
+         <h2>학생 수정</h2>
+         
+            <div>
+               <button id="close__button2" class="close__button" type="button">X</button>
+               <div>
+                  <label for="">학번</label> <input type="number"
+                     class="student__input edit__input" required>
+               </div>
+               <div>
+                  <label for="">학과</label> <input type="text"
+                     class="student__input edit__input" required>
+               </div>
+               <div>
+                  <label for="">이름</label> <input id="text"
+                     class="student__input edit__input" required>
+               </div>
+               <div>
+                  <label for="">이메일</label> <input type="email"
+                     class="student__input edit__input" required>
+               </div>
+               <div>
+                  <label for="">응시 여부 (Y / N)</label> <input type="text"
+                     class="student__input  edit__input" required>
+               </div>
+               <div>
+                  <button id="confirm-edit__button" class="confirm__button">확인</button>
+               </div>
+
+            </div>
+         
+      </article>
+   </section>
+   <!--End-->
 
    <footer>
       <div class="line"></div>
