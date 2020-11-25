@@ -4,7 +4,7 @@ SELECT * FROM STUDENT;
 SELECT * FROM STUDENTCAPTURE;
 SELECT * FROM STUDENTANSWER;
 
-select student_uuid from student where STUDENT_CODE='20162579'
+select student_uuid from student where STUDENT_CODE='20162579';
 
 update student set STUDENT_UUID ='a1248d71-6fd7-4079-b9ff-1c1ed77ea8a5';
 delete from student where STUDENT_CODE='20172391';
@@ -99,6 +99,9 @@ values ('20172391', 'A033212', 'SSUIT', '컴퓨터공학부', '하진우', 'gkwl
 #학생 답안 기본 정보 세팅
 INSERT INTO STUDENTANSWER (TEST_NUM, STUDENT_CODE, TEST_CODE, USER_ID) 
 VALUES ('5', '20162579', 'A033212', 'SSUIT');
+
+#학번 중복성 체크
+select * from student where student_code='20162579';
 
 #시험시간 설정
 update tester set TEST_START='90DD', TEST_SUMMITIME='1023'

@@ -32,15 +32,18 @@ public class StudentInfoCtrl {
 	@RequestMapping(value="/insertStudent.do", method=RequestMethod.POST)
 	public String insertStudentinfo(StudentInfoDto sdto) {
 		log.info("insertStudentinfo 수험자 정보입력: \t > {}");
-		service.InsertStudent(sdto);
-		
-		log.info("studentAnswerBasic 학생 답안저장 기본 정보 세팅: \t > {}");
-		Map<String, Object> basicAswmap = new HashMap<String, Object>();
-		for(int i=1;i<=10;i++) {
-			basicAswmap.put("student_code", sdto.getStudent_code());
-			basicAswmap.put("test_num", i);
-			service.studentAnswerBasic(basicAswmap);
+		if (false) {//학번 중복 확인:중복 안한다면
+			service.InsertStudent(sdto);
+			
+			log.info("studentAnswerBasic 학생 답안저장 기본 정보 세팅: \t > {}");
+			Map<String, Object> basicAswmap = new HashMap<String, Object>();
+			for(int i=1;i<=10;i++) {
+				basicAswmap.put("student_code", sdto.getStudent_code());
+				basicAswmap.put("test_num", i);
+				service.studentAnswerBasic(basicAswmap);
+			}
 		}
+		
 		return "redirect:/studentsInfo.do";
 	}
 	
