@@ -101,7 +101,7 @@ INSERT INTO STUDENTANSWER (TEST_NUM, STUDENT_CODE, TEST_CODE, USER_ID)
 VALUES ('5', '20162579', 'A033212', 'SSUIT');
 
 #학번 중복성 체크
-select * from student where student_code='20162579';
+select count(student_code) from student where student_code='20162579';
 
 #시험시간 설정
 update tester set TEST_START='90DD', TEST_SUMMITIME='1023'
