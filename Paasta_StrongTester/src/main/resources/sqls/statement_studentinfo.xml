@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.min.hb.student">
+
+	<!-- 1.학생기본정보 입력(학번, 테스코드, 주관사ID, 학과, 이름, 이메일, 응시여부) -->
+	<insert id="insertStudent" parameterType="stdDto">
+		INSERT INTO STUDENT (STUDENT_CODE, TEST_CODE, USER_ID, STUDENT_DEPTM,
+		STUDENT_NAME, STUDENT_EMAIL, TEST_FLAG)
+		VALUES (#{student_code}, 'A033212', 'SSUIT', #{student_deptm}, #{student_name}, #{student_email}, 'N')
+	</insert>
+	
+	<!-- 2. 학생 답안저장 기본 정보 세팅 -->
+	<insert id="studentAnswerBasic" parameterType="java.util.Map">
+		INSERT INTO STUDENTANSWER (TEST_NUM, STUDENT_CODE, TEST_CODE, USER_ID) 
+		VALUES (#{test_num}, #{student_code}, 'A033212', 'SSUIT')
+	</insert>
+</mapper>

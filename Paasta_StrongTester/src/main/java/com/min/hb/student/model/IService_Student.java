@@ -97,4 +97,19 @@ public interface IService_Student {
 	 * @result String
 	 */
 	public List<String> SelectVideoLink(String capture_content);
+	
+	/**
+	 * 수험자 정보 입력
+	 * @param sdto
+	 * @return
+	 */
+	public boolean InsertStudent(StudentInfoDto sdto);
+	
+	/**
+	 * 학생 답안저장 기본정보 세팅
+	 * @param basicAswmap
+	 * @return
+	 */
+	public boolean studentAnswerBasic(Map<String, Object> basicAswmap);
+	
 }

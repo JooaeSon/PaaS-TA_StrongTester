@@ -9,5 +9,6 @@
 
 <mappers>
 	<mapper resource="/sqls/statement_student.xml"/>
+	<mapper resource="/sqls/statement_studentinfo.xml"/>
 </mappers>
 </configuration>

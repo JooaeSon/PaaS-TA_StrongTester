@@ -104,6 +104,20 @@ public class DaoImpl_Student implements IDao_Student {
 		log.info("DaoImpl_SelectVideoLink 비디오 링크 선택 :{}", capture_content);
 		return session.selectList(NS+"SelectVideoLink", capture_content);
 	}
+
+	@Override
+	public boolean InsertStudent(StudentInfoDto sdto) {
+		log.info("DaoImpl_InsertStudent 수험자 정보입력 :{}", sdto);
+		int cnt=session.insert(NS+"insertStudent", sdto);
+		return cnt>0? true:false;
+	}
+
+	@Override
+	public boolean studentAnswerBasic(Map<String, Object> basicAswmap) {
+		log.info("DaoImpl_studentAnswerBasic 학생 답안저장 기본 정보 세팅 :{}", basicAswmap);
+		int cnt=session.insert(NS+"studentAnswerBasic", basicAswmap);
+		return cnt>0? true:false;
+	}
 	
 
 }

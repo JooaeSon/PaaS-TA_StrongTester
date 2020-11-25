@@ -38,7 +38,7 @@ public class StudentCtrl {
     * 학생들의 수험관련 전체정보 조회
     * @return 해당 과목 수험자 정보 전체 조회 화면
     */
-   @RequestMapping(value="/studentsInfo.do", method=RequestMethod.POST)
+   @RequestMapping(value="/studentsInfo.do", method=RequestMethod.GET)
    public String studentsInfo(Model model) {
       List<StudentInfoDto> stdAllList = service.StudentInfoSelect();
       model.addAttribute("stdAllList", stdAllList); //학생들 리스트

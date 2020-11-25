@@ -53,17 +53,17 @@
          <div id="student__add__article">
 
             <div>
-               <form id="student__inputs">
+               <form id="student__inputs" action="./insertStudent.do" method="POST">
 
-                  <input type="number" id="std-num__input" class="student__input"
+                  <input type="number" id="std-num__input" name="student_code" class="student__input"
                      placeholder="학번" required> <input type="text"
-                     id="std-major__input" class="student__input" placeholder="학과"
-                     required> <input type="text" id="std-name__input"
+                     id="std-major__input" name="student_deptm" class="student__input" placeholder="학과"
+                     required> <input type="text" id="std-name__input" name="student_name"
                      class="student__input" placeholder="이름" required> <input
-                     type="email" id="std-email__input" class="student__input"
+                     type="email" id="std-email__input" name="student_email" class="student__input"
                      placeholder="이메일" required>
 
-                  <button id="student-add__button">
+                  <button type="submit" id="student-add__button">
                      <i class="fas fa-plus-square"></i>
                   </button>
 
