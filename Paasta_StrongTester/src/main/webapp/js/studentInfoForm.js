@@ -163,7 +163,22 @@ const $deleteBtns = document.querySelectorAll('.delete__btn');
 for (let i = 0; i < $deleteBtns.length ; i++){
   $deleteBtns[i].addEventListener('click', () => {
     // TODO: db에서 삭제
-    alert(`${$deleteBtns[i].value}삭제`); 
+
+
+    swal({
+    	  title: "Are you sure?",
+    	  text: "삭제하는 순간 모든 학생의 시험정보와 답안이 삭제됩니다.    \n 정말 삭제하시겠습니까?",
+    	  icon: "warning",
+    	  buttons: true,
+    	  dangerMode: true,
+    	})
+    	.then((willDelete) => {
+    	  if (willDelete) {
+    	    swal("삭제했습니다.", {
+    	      icon: "success",
+    	    });
+    	  }
+    	});
   });
 }
 

@@ -19,6 +19,7 @@
 
 <link rel="stylesheet" href="./css/studentInfoForm.css" />
 </head>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://kit.fontawesome.com/12ed482fdd.js"
    crossorigin="anonymous"></script>
 <script
@@ -181,11 +182,12 @@
                   <label for="">응시 여부 (Y / N)</label> <input type="text"
                      class="student__input  edit__input" required>
                </div>
-               <div>
-                  <button id="confirm-edit__button" class="confirm__button">확인</button>
-               </div>
+              
 
             </div>
+             <div>
+                  <button id="confirm-edit__button" class="confirm__button">확인</button>
+               </div>
          
       </article>
    </section>

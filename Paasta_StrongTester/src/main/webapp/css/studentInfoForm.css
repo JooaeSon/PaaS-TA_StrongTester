@@ -371,7 +371,7 @@ input[type="number"]::-webkit-inner-spin-button {
   text-align: center;
 }
 .modal__content input {
-  margin: 10% auto;
+  margin: 10px auto;
 }
 
 
@@ -398,6 +398,10 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .edit__modal__content {
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+	
   background-color: white;
   border: 1px solid var(--color-grey);
   position: absolute;
@@ -415,10 +419,12 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 130px;
   text-align: center;
 }
-.edit__modal div {
+.edit__modal__content div {
   margin: 10px;
 }
-
+.edit__modal__content h2{
+	margin-bottom: 10px;
+}
 
 .close__button {
   position: absolute;
@@ -438,10 +444,7 @@ input[type="number"]::-webkit-inner-spin-button {
   height: 40px;
   line-height: 40px;
   border-radius: 4px;
-position:absolute;
-bottom:10%;
- transform: translate(-50%);
-left:50%;
+
   font-size: 16px;
 }
 
