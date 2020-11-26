@@ -16,7 +16,7 @@
 	</insert>
 	
 	<!-- 3.학번 중복성 체크 -->
-	<select id="ChkStudentCode" parameterType="java.lang.String">
+	<select id="ChkStudentCode" parameterType="java.lang.String" resultType="Integer">
 		SELECT COUNT(STUDENT_CODE) FROM STUDENT WHERE STUDENT_CODE=#{student_code}
 	</select>
 </mapper>

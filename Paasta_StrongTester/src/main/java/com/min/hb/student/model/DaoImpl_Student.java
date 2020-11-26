@@ -118,6 +118,14 @@ public class DaoImpl_Student implements IDao_Student {
 		int cnt=session.insert(NS+"studentAnswerBasic", basicAswmap);
 		return cnt>0? true:false;
 	}
+
+	@Override
+	public boolean ChkStudentCode(String student_code) {
+		log.info("DaoImpl_ChkStudentCode 학번 중복성 체크 :{}", student_code);
+		int cnt=session.selectOne(NS+"ChkStudentCode", student_code);
+		System.out.println(cnt);
+		return cnt<1? true:false;
+	}
 	
 
 }

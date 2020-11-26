@@ -112,4 +112,11 @@ public interface IService_Student {
 	 */
 	public boolean studentAnswerBasic(Map<String, Object> basicAswmap);
 	
+	/**
+	 * 학번 중복성 체크
+	 * @param student_code
+	 * @return
+	 */
+	public boolean ChkStudentCode(String student_code);
+	
 }
