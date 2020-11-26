@@ -22,7 +22,7 @@
     </nav>
     <section class="section">
       <div class="section__content">
-        <form action="./studentsInfo.do" method="POST">
+        <form action="./studentsInfo.do" method="GET">
           <h1>STRONG TESTER 교수용</h1>
           <input type="submit" value="입장" id="master-login" />
         </form>

@@ -97,5 +97,23 @@ public class ServiceImpl_Student implements IService_Student{
 		return dao.SelectVideoLink(capture_content);
 	}
 
+	@Override
+	public boolean InsertStudent(StudentInfoDto sdto) {
+		log.info("ServiceImpl_InsertStudent 수험자 정보입력 :{}", sdto);
+		return dao.InsertStudent(sdto);
+	}
+
+	@Override
+	public boolean studentAnswerBasic(Map<String, Object> basicAswmap) {
+		log.info("ServiceImpl_studentAnswerBasic 학생 답안저장 기본 정보 세팅 :{}", basicAswmap);
+		return dao.studentAnswerBasic(basicAswmap);
+	}
+
+	@Override
+	public boolean ChkStudentCode(String student_code) {
+		log.info("ServiceImpl_ChkStudentCode 학번 중복성 체크 :{}", student_code);
+		return dao.ChkStudentCode(student_code);
+	}
+
 
 }

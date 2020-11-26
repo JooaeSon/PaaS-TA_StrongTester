@@ -4,7 +4,7 @@ SELECT * FROM STUDENT;
 SELECT * FROM STUDENTCAPTURE;
 SELECT * FROM STUDENTANSWER;
 
-select student_uuid from student where STUDENT_CODE='20162579'
+select student_uuid from student where STUDENT_CODE='20162579';
 
 update student set STUDENT_UUID ='a1248d71-6fd7-4079-b9ff-1c1ed77ea8a5';
 delete from student where STUDENT_CODE='20172391';
@@ -86,7 +86,7 @@ VALUES ('10', '20162579', 'A033212', 'SSUIT', '20');
 UPDATE STUDENTANSWER SET STUDENT_ANSWER= '안녕하세요'
 WHERE STUDENT_CODE ='20162579' AND TEST_NUM='1';
 
-SELECT * FROM STUDENTANSWER;
+SELECT * FROM STUDENT;
 delete from studentanswer;
 #웹캠 정보 세팅
 INSERT INTO STUDENTCAPTURE (TEST_CODE, STUDENT_CODE, USER_ID)
@@ -95,6 +95,13 @@ VALUES ('A033212', '20162623', 'SSUIT');
 #학생기본정보 입력(학번, 테스코드, 주관사ID, 학과, 이름, 이메일, 응시여부)
 insert into STUDENT (STUDENT_CODE, TEST_CODE, USER_ID, STUDENT_DEPTM, STUDENT_NAME, STUDENT_EMAIL, TEST_FLAG)
 values ('20172391', 'A033212', 'SSUIT', '컴퓨터공학부', '하진우', 'gkwlsdn@naver.com', 'N');
+
+#학생 답안 기본 정보 세팅
+INSERT INTO STUDENTANSWER (TEST_NUM, STUDENT_CODE, TEST_CODE, USER_ID) 
+VALUES ('5', '20162579', 'A033212', 'SSUIT');
+
+#학번 중복성 체크
+select count(student_code) from student where student_code='20162579';
 
 #시험시간 설정
 update tester set TEST_START='90DD', TEST_SUMMITIME='1023'
