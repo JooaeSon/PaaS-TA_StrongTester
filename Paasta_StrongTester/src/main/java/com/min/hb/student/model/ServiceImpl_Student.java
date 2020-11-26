@@ -109,5 +109,11 @@ public class ServiceImpl_Student implements IService_Student{
 		return dao.studentAnswerBasic(basicAswmap);
 	}
 
+	@Override
+	public boolean ChkStudentCode(String student_code) {
+		log.info("ServiceImpl_ChkStudentCode 학번 중복성 체크 :{}", student_code);
+		return dao.ChkStudentCode(student_code);
+	}
+
 
 }
