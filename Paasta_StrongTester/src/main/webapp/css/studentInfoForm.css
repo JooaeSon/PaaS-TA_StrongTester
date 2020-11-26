@@ -404,7 +404,7 @@ input[type="number"]::-webkit-inner-spin-button {
   transform: translate(-50%, -50%);
   z-index: 1000;
   width: 40%;
-  height: 55%;
+  height: 70%;
   color: black;
   left: 50%;
   top: 50%;
@@ -438,7 +438,10 @@ input[type="number"]::-webkit-inner-spin-button {
   height: 40px;
   line-height: 40px;
   border-radius: 4px;
-
+position:absolute;
+bottom:10%;
+ transform: translate(-50%);
+left:50%;
   font-size: 16px;
 }
 
