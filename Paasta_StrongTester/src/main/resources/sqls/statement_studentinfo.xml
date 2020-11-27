@@ -16,7 +16,20 @@
 	</insert>
 	
 	<!-- 3.학번 중복성 체크 -->
-	<select id="ChkStudentCode" parameterType="java.lang.String" resultType="Integer">
-		SELECT COUNT(STUDENT_CODE) FROM STUDENT WHERE STUDENT_CODE=#{student_code}
+	<select id="ChkStudentCode" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM STUDENT WHERE STUDENT_CODE=#{student_code}
 	</select>
+	
+	<!-- 4.학생기본 정보 수정 -->
+	<update id="updateStudentInfo" parameterType="stdDto">
+		UPDATE STUDENT SET STUDENT_CODE=#{student_code}, STUDENT_NAME=#{student_name}, 
+		STUDENT_EMAIL=#{student_email}, STUDENT_DEPTM=#{student_deptm}, TEST_FLAG=#{test_flag}
+		WHERE TEST_CODE='A033212' AND USER_ID ='SSUIT' AND STUDENT_CODE =#{seq}
+	</update>
+	
+	<!-- 5.학생기본 정보 삭제 -->
+	<delete id="deleteStudentInfo" parameterType="java.lang.String">
+		DELETE FROM STUDENT WHERE STUDENT_CODE=#{student_code}
+	</delete>
+	
 </mapper>

@@ -119,4 +119,24 @@ public interface IService_Student {
 	 */
 	public boolean ChkStudentCode(String student_code);
 	
+	/**
+	 * 학생기본정보 수정
+	 * @param sdto
+	 * @return
+	 */
+	public boolean updateStudentInfo(StudentInfoDto sdto);
+	
+	/**
+	 * 학생기본정보 삭제
+	 * @param student_code
+	 * @return
+	 */
+	public boolean deleteStudentInfo(String student_code);
+	
+	/**
+	 * 시험시간 설정
+	 * @param timeMap
+	 * @return
+	 */
+	public boolean setTestTime(Map<String, Object> timeMap);
 }

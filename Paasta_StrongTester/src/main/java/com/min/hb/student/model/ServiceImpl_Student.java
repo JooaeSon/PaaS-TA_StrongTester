@@ -115,5 +115,22 @@ public class ServiceImpl_Student implements IService_Student{
 		return dao.ChkStudentCode(student_code);
 	}
 
+	@Override
+	public boolean updateStudentInfo(StudentInfoDto sdto) {
+		log.info("ServiceImpl_updateStudentInfo 학생기본정보 수정 :{}", sdto);
+		return dao.updateStudentInfo(sdto);
+	}
+
+	@Override
+	public boolean deleteStudentInfo(String student_code) {
+		log.info("ServiceImpl_deleteStudentInfo 학생기본정보 삭제 :{}", student_code);
+		return dao.deleteStudentInfo(student_code);
+	}
+
+	@Override
+	public boolean setTestTime(Map<String, Object> timeMap) {
+		log.info("ServiceImpl_setTestTime 시험시간세팅:{}", timeMap);
+		return dao.setTestTime(timeMap);
+	}
 
 }

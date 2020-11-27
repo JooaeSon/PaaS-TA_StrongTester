@@ -147,24 +147,31 @@ $confirmTimeBtn.addEventListener('click', () => {
   endTime = $endTime.value.split(':');
   endH = endTime[0];
   endM = endTime[1];
-
-  if (startH > endH || startM >= endM ){
-    alert('시작 시간은 종료시간 이전이어야 합니다.');
+  
+  if (startH > endH || (startH == endH && startM > endM)){
+    swal('시작 시간은 종료시간 이전이어야 합니다.');
   }
   else{
     // TODO: 날짜를 DB에 저장해야됨.
     alert(`${year}-${month}-${day} ${startH}시 ${startM}분 ~ ${endH}시 ${endM}분`);
+    var startTest=""+year+"-"+month+"-"+day+"T"+startH+":"+startM+"";
+    var endTest=""+year+"-"+month+"-"+day+"T"+endH+":"+endM+"";
+    location.href="./setTestTime.do?test_start="+startTest+"&test_end="+endTest;
   }
 });
 
 
 //학생 삭제
+function del(stdCode){
+   //alert(stdCode);
+   location.href="./deleteStudent.do?student_code="+stdCode;
+}
+
 const $deleteBtns = document.querySelectorAll('.delete__btn');
 for (let i = 0; i < $deleteBtns.length ; i++){
   $deleteBtns[i].addEventListener('click', () => {
     // TODO: db에서 삭제
-
-
+	stdCode=$deleteBtns[i].value;
     swal({
     	  title: "Are you sure?",
     	  text: "삭제하는 순간 모든 학생의 시험정보와 답안이 삭제됩니다.    \n 정말 삭제하시겠습니까?",
@@ -174,6 +181,7 @@ for (let i = 0; i < $deleteBtns.length ; i++){
     	})
     	.then((willDelete) => {
     	  if (willDelete) {
+    		del(stdCode);
     	    swal("삭제했습니다.", {
     	      icon: "success",
     	    });
@@ -205,14 +213,17 @@ $editBtns[i].addEventListener('click', () => {
  
  tr = $tr.getElementsByTagName("td");
 
-
+ $studentInput[0].value = tr[1].innerHTML;
  for (let i = 1 ; i < 6; i++){    
-   $studentInput[i-1].value = tr[i].innerHTML;
+   $studentInput[i].value = tr[i].innerHTML;
  }
 
 })};
 
 const $confirmEditBtn = document.querySelector('#confirm-edit__button');
 $confirmEditBtn.addEventListener('click', (e) => {
-  alert('수정완료');
+	swal("수정완료!", {
+	      icon: "success",
+	      buttons: true
+	    });
 });

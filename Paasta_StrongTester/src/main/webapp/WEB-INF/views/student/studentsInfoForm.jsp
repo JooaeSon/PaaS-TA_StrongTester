@@ -158,37 +158,39 @@
    <!-- 학생 수정 모달-->
    <section class="edit__modal">
       <article class="edit__modal__content">
+      <form id="updateStudentInfo" action="./updateStdInfo.do" method="POST">
          <h2>학생 수정</h2>
          
             <div>
                <button id="close__button2" class="close__button" type="button">X</button>
                <div>
+               	  <input type="hidden" name="seq" class="student__input edit__input">
                   <label for="">학번</label> <input type="number"
-                     class="student__input edit__input" required>
+                     name="student_code" class="student__input edit__input" required>
                </div>
                <div>
                   <label for="">학과</label> <input type="text"
-                     class="student__input edit__input" required>
+                     name="student_deptm" class="student__input edit__input" required>
                </div>
                <div>
                   <label for="">이름</label> <input id="text"
-                     class="student__input edit__input" required>
+                     name="student_name" class="student__input edit__input" required>
                </div>
                <div>
                   <label for="">이메일</label> <input type="email"
-                     class="student__input edit__input" required>
+                     name="student_email" class="student__input edit__input" required>
                </div>
                <div>
                   <label for="">응시 여부 (Y / N)</label> <input type="text"
-                     class="student__input  edit__input" required>
+                     name="test_flag" class="student__input  edit__input" required>
                </div>
               
 
             </div>
              <div>
-                  <button id="confirm-edit__button" class="confirm__button">확인</button>
+                  <button type="submit" id="confirm-edit__button" class="confirm__button">확인</button>
                </div>
-         
+         </form>
       </article>
    </section>
    <!--End-->
