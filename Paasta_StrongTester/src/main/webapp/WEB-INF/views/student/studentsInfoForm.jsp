@@ -94,36 +94,9 @@
                </tr>
             </thead>
             <tbody id="tbody">
-
-               <c:forEach var="stdto" items="${stdAllList}" varStatus="vs">
-
-                  <tr>
-                     <td><input type="checkbox" class="checkbox" name="std_id"
-                        value="${stdto.student_code}" /></td>
-                     <td>${stdto.student_code}</td>
-                     <td>${stdto.student_deptm}</td>
-                     <td>${stdto.student_name}</td>
-                     <td>${stdto.student_email}</td>
-                     <td class="data-flag">${stdto.test_flag}</td>
-                     <td>
-                        <!-- <button class="student__button showInfo" value="${stdto.student_code}">조회</button> -->
-                        <input type="submit" onclick="checkIt(${stdto.student_code});"
-                        class="student__button showInfo" name="stdId"
-                        value="${stdto.student_code}" />
-                     </td>
-                     <td><button type="button" class="setting__buttons edit__btn"
-                           value="${stdto.student_code}">
-                           <i class="fas fa-edit"></i>
-                        </button></td>
-                     <td><button class="setting__buttons delete__btn"
-                           type="button" value="${stdto.student_code}">
-                           <i class="fas fa-trash-alt"></i>
-                        </button></td>
-
-                  </tr>
-
-
-               </c:forEach>
+				<jsp:useBean id="format" class="com.min.hb.bean.InputList" scope="page"/>
+               	<jsp:setProperty property="lists" name="format" value="${stdAllList}"/>
+            	<jsp:getProperty property="listForm" name="format"/>
             </tbody>
          </table>
 

@@ -77,7 +77,6 @@ function checkIt(stdCode){
    showInfo(stdCode);
 }
 function showInfo(stdNumber) {
-      alert(stdNumber);
        //전달할 폼 영역
          var frm = document.getElementById("frm");
          frm.action = "./studentDetailView.do";
@@ -89,7 +88,7 @@ function showInfo(stdNumber) {
                     //alert("학번전송", "인증키 전송 성공");
                     //alert(msg.student_code);
                     frm.stdId.value=msg.student_code;
-                    frm.submit();
+                    //frm.submit();
                 },
                 error: function () {
                   alert("오류", "잘못된 요청입니다.");
