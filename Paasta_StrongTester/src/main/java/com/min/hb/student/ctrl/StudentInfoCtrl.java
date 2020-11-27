@@ -58,7 +58,7 @@ public class StudentInfoCtrl {
 
 			PrintWriter out = response.getWriter();
 
-			out.println("<script>alert('중복되는 학번입니다. 다른학번을 다시 입력해주세요.');</script>");
+			out.println("<script>alert('이미 존재하는 학번입니다. 다른학번을 다시 입력해주세요.');</script>");
 			out.flush();
 
 			List<StudentInfoDto> stdAllList = service.StudentInfoSelect();
@@ -66,8 +66,56 @@ public class StudentInfoCtrl {
 			log.info("StudentCtrl 학생들 정보 목록 조회 : \t > {}");
 			return "student/studentsInfoForm";
 		}
+	}
+	
+	/**
+	 * 학생기본정보 수정
+	 * @param sdto
+	 * @param response
+	 * @param model
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value="/updateStdInfo.do", method=RequestMethod.POST)
+	public String updateStudentInfo(StudentInfoDto sdto, 
+			HttpServletResponse response, Model model) throws IOException {
+		log.info("updateStudentInfo 학생정보 수정: \t >{}", sdto);
+		//학번 중복 확인:중복 안한다면
+		//1. 바꾸려는 학번과 전 학번이 같으면 수정가능.
+		//2. 바꾸려는 학번과 전학번이 다를 경우, 학생리스트에 중복되는 학번이 있는지 체크
+		if (sdto.getStudent_code().equalsIgnoreCase(sdto.getSeq()) ||
+				(!(sdto.getStudent_code().equalsIgnoreCase(sdto.getSeq())) && 
+				service.ChkStudentCode(sdto.getStudent_code()))) {
+			//학생정보수정
+			service.updateStudentInfo(sdto);
+			return "redirect:/studentsInfo.do";
+		}else {
+			log.info("수험자 학번 중복: \t > {}");
+			response.setContentType("text/html; charset=UTF-8");
 
+			PrintWriter out = response.getWriter();
 
+			out.println("<script>alert('이미 존재하는 학번입니다. 다른학번을 다시 입력해주세요.');</script>");
+			out.flush();
+			
+			List<StudentInfoDto> stdAllList = service.StudentInfoSelect();
+			model.addAttribute("stdAllList", stdAllList); //학생들 리스트
+			log.info("StudentCtrl 학생들 정보 목록 조회 : \t > {}");
+			
+			return "student/studentsInfoForm";
+		}
+	}
+	
+	/**
+	 * 학생기본정보 삭제
+	 * @param student_code
+	 * @return
+	 */
+	@RequestMapping(value="/deleteStudent.do", method=RequestMethod.GET)
+	public String deleteStudent(String student_code) {
+		log.info("deleteStudent 학생정보 삭제: \t >{}", student_code);
+		service.deleteStudentInfo(student_code);
+		return "redirect:/studentsInfo.do";
 	}
 
 }

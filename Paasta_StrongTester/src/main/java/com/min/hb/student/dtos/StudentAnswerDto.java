@@ -11,7 +11,6 @@ public class StudentAnswerDto implements Serializable{
 	private String test_code;
 	private String user_id;
 	private String student_score;
-	private String answer_similar;
 	private String student_answer;
 	
 	public StudentAnswerDto() {
@@ -19,14 +18,13 @@ public class StudentAnswerDto implements Serializable{
 	}
 
 	public StudentAnswerDto(String test_num, String student_code, String test_code, String user_id,
-			String student_score, String answer_similar, String student_answer) {
+			String student_score, String student_answer) {
 		super();
 		this.test_num = test_num;
 		this.student_code = student_code;
 		this.test_code = test_code;
 		this.user_id = user_id;
 		this.student_score = student_score;
-		this.answer_similar = answer_similar;
 		this.student_answer = student_answer;
 	}
 
@@ -70,14 +68,6 @@ public class StudentAnswerDto implements Serializable{
 		this.student_score = student_score;
 	}
 
-	public String getAnswer_similar() {
-		return answer_similar;
-	}
-
-	public void setAnswer_similar(String answer_similar) {
-		this.answer_similar = answer_similar;
-	}
-
 	public String getStudent_answer() {
 		return student_answer;
 	}
@@ -89,8 +79,8 @@ public class StudentAnswerDto implements Serializable{
 	@Override
 	public String toString() {
 		return "StudentAnswerDto [test_num=" + test_num + ", student_code=" + student_code + ", test_code=" + test_code
-				+ ", user_id=" + user_id + ", student_score=" + student_score + ", answer_similar=" + answer_similar
-				+ ", student_answer=" + student_answer + "]";
+				+ ", user_id=" + user_id + ", student_score=" + student_score + ", student_answer=" + student_answer
+				+ "]";
 	}
 	
 }

@@ -2,7 +2,7 @@
 SELECT * FROM TESTER;
 SELECT * FROM STUDENT;
 SELECT * FROM STUDENTCAPTURE;
-SELECT * FROM STUDENTANSWER;
+SELECT * FROM STUDENTANSWER order by student_code;
 
 select student_uuid from student where STUDENT_CODE='20162579';
 
@@ -86,12 +86,12 @@ VALUES ('10', '20162579', 'A033212', 'SSUIT', '20');
 UPDATE STUDENTANSWER SET STUDENT_ANSWER= '안녕하세요'
 WHERE STUDENT_CODE ='20162579' AND TEST_NUM='1';
 
-SELECT * FROM STUDENT;
+SELECT * FROM STUDENTANSWER;
 delete from studentanswer;
 #웹캠 정보 세팅
 INSERT INTO STUDENTCAPTURE (TEST_CODE, STUDENT_CODE, USER_ID)
 VALUES ('A033212', '20162623', 'SSUIT');
-
+#--학생입력----------------------------------------------------------
 #학생기본정보 입력(학번, 테스코드, 주관사ID, 학과, 이름, 이메일, 응시여부)
 insert into STUDENT (STUDENT_CODE, TEST_CODE, USER_ID, STUDENT_DEPTM, STUDENT_NAME, STUDENT_EMAIL, TEST_FLAG)
 values ('20172391', 'A033212', 'SSUIT', '컴퓨터공학부', '하진우', 'gkwlsdn@naver.com', 'N');
@@ -103,8 +103,15 @@ VALUES ('5', '20162579', 'A033212', 'SSUIT');
 #학번 중복성 체크
 select count(student_code) from student where student_code='20162579';
 
+#--학생 수정-----------------------------------------------------------------
+update student set STUDENT_CODE='20192031', STUDENT_NAME='김지원', STUDENT_EMAIL='onsemiro@naver.com', STUDENT_DEPTM='글로벌미디어학부', TEST_FLAG='N'
+where TEST_CODE='A033212' and USER_ID ='SSUIT' and STUDENT_CODE ='20192032';
+
+#--학생 삭제----------------------------------------------------------------------
+delete from student where STUDENT_CODE='20162623';
+
 #시험시간 설정
-update tester set TEST_START='90DD', TEST_SUMMITIME='1023'
+update tester set TEST_START='90DD', TEST_END='1023'
 where TEST_CODE='A033212' and USER_ID ='SSUIT';
 
 

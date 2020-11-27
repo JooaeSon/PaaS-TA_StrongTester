@@ -123,9 +123,29 @@ public class DaoImpl_Student implements IDao_Student {
 	public boolean ChkStudentCode(String student_code) {
 		log.info("DaoImpl_ChkStudentCode 학번 중복성 체크 :{}", student_code);
 		int cnt=session.selectOne(NS+"ChkStudentCode", student_code);
-		System.out.println(cnt);
+
 		return cnt<1? true:false;
 	}
-	
+
+	@Override
+	public boolean updateStudentInfo(StudentInfoDto sdto) {
+		log.info("DaoImpl_updateStudentInfo 학생기본정보 수정 :{}", sdto);
+		int cnt=session.update(NS+"updateStudentInfo", sdto);
+		return cnt>0? true:false;
+	}
+
+	@Override
+	public boolean deleteStudentInfo(String student_code) {
+		log.info("DaoImpl_deleteStudentInfo 학생기본정보 삭제 :{}", student_code);
+		int cnt=session.delete(NS+"deleteStudentInfo", student_code);
+		return cnt>0? true:false;
+	}
+
+	@Override
+	public boolean setTestTime(Map<String, Object> timeMap) {
+		log.info("DaoImpl_setTestTime 시험시간세팅:{}", timeMap);
+		int cnt=session.update(NS+"setTestTime", timeMap);
+		return cnt>0? true:false;
+	}
 
 }
