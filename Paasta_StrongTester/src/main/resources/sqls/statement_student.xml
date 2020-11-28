@@ -21,7 +21,7 @@
 	<!-- 3.메일에 보낼 기본 정보 가져오기 -->
 	<select id="MailBasicInfo" parameterType="java.lang.String" resultType="stdDto">
 		SELECT STUDENT_CODE, TEST_CODE, USER_ID, STUDENT_DEPTM,
-		STUDENT_NAME, STUDENT_EMAIL, STUDENT_UUID, TEST_LINK
+		STUDENT_NAME, STUDENT_EMAIL, STUDENT_UUID
 		FROM STUDENT
 		WHERE USER_ID='SSUIT' AND TEST_CODE='A033212' AND STUDENT_CODE=#{student_code}
 	</select>
