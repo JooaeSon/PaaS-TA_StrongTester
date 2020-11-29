@@ -103,7 +103,7 @@ public class TesterCtrl {
 	public void run() {
 		log.info("run, let's Start!!!");
 		String[] args= {""};
-		String filenameFaceCascade = args.length > 2 ? args[0] : "C:\\HappyBugs\\workspace_project\\Paasta_StrongTester\\frontalface_alt.xml";
+		String filenameFaceCascade = args.length > 2 ? args[0] : "C:\\HappyBugs\\git\\Paasta_StrongTester\\Paasta_StrongTester\\frontalface_alt.xml";
 		int cameraDevice = args.length > 2 ? Integer.parseInt(args[2]) : 0;
 		CascadeClassifier faceCascade = new CascadeClassifier();
 
@@ -140,11 +140,11 @@ public class TesterCtrl {
 				if (count==0) {      
 					System.out.println("0명감지");
 					//./video/주관사id+시험코드+학번+영상번호(시간)
-					String name ="C:\\HappyBugs\\workspace_project\\Paasta_StrongTester\\src\\main\\webapp\\video\\SSUITA033212"+stdCode+time1+".mp4";
-
+					String name ="C:\\HappyBugs\\git\\Paasta_StrongTester\\Paasta_StrongTester\\src\\main\\webapp\\video\\SSUITA033212"+stdCode+time1+".mp4";
+					
 					//비디오 링크 저장
 					Map<String, Object> vmap = new HashMap<String, Object>();
-					String videofilename=name.substring(73);
+					String videofilename=name.substring(79);
 					log.info("videofilename: "+videofilename);
 					vmap.put("student_code", stdCode);
 					vmap.put("capture_content", videofilename);
@@ -156,11 +156,11 @@ public class TesterCtrl {
 				}
 				else if (count >= 2) {      
 					System.out.println("2명 이상 감지");
-					String name ="C:\\HappyBugs\\workspace_project\\Paasta_StrongTester\\src\\main\\webapp\\video\\SSUITA033212"+stdCode+time1+".mp4";
+					String name ="C:\\HappyBugs\\git\\Paasta_StrongTester\\Paasta_StrongTester\\src\\main\\webapp\\video\\SSUITA033212"+stdCode+time1+".mp4";
 					
 					//비디오 링크 저장
 					Map<String, Object> vmap = new HashMap<String, Object>();
-					String videofilename=name.substring(73);
+					String videofilename=name.substring(79);
 					log.info("videofilename: "+videofilename);
 					vmap.put("student_code", stdCode);
 					vmap.put("capture_content", videofilename);
