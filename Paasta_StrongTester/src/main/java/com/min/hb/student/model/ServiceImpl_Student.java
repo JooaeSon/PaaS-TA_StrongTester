@@ -133,4 +133,10 @@ public class ServiceImpl_Student implements IService_Student{
 		return dao.setTestTime(timeMap);
 	}
 
+	@Override
+	public Map<String, Object> selectTestTime() {
+		log.info("ServiceImpl_selectTestTime 시험시간 조회 (시작시간, 종료시간):{}");
+		return dao.selectTestTime();
+	}
+
 }

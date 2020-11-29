@@ -139,4 +139,11 @@ public interface IDao_Student {
 	 * @return
 	 */
 	public boolean setTestTime(Map<String, Object> timeMap);
+	
+	/**
+	 * 시험시간 조회 (시작시간, 종료시간)
+	 * @return test_start, test_end
+	 */
+	public Map<String, Object> selectTestTime();
+	
 }

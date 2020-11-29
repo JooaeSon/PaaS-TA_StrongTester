@@ -4,15 +4,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,13 +25,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.min.hb.student.dtos.StudentInfoDto;
 import com.min.hb.student.model.IService_Student;
-import com.min.hb.webcam.ctrl.WebcamCtrl;
-
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
 import org.opencv.core.Point;
@@ -359,8 +353,6 @@ public class TesterCtrl {
 			}
 			cnt++;
 		}
-
-		boolean isc=false;
 
 		if(cnt==10) { //문제 수 만큼 답 저장 성공하면
 			map.put("isc", "true");

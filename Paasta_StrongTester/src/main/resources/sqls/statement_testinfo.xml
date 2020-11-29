@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.min.hb.student">
-  
-  <!-- 1.시험시간 설정 -->
+
+	<!-- 1.시험시간 설정 -->
 	<update id="setTestTime" parameterType="java.util.Map">
-		UPDATE TESTER SET TEST_START=#{test_start}, TEST_END=#{test_end}
-		WHERE TEST_CODE='A033212' AND USER_ID ='SSUIT'
+		UPDATE TESTER SET
+		TEST_START=#{test_start}, TEST_END=#{test_end}
+		WHERE
+		TEST_CODE='A033212' AND USER_ID ='SSUIT'
 	</update>
+
+	<!-- 2.시험시간 조회 (시작시간, 종료시간)-->
+	<select id="selectTestTime" resultType="java.util.Map">
+		SELECT TEST_START, TEST_END FROM TESTER
+		WHERE TEST_CODE='A033212' AND USER_ID ='SSUIT'
+	</select>
 	
 </mapper>
