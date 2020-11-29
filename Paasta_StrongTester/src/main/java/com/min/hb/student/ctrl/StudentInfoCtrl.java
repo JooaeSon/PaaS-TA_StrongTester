@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.min.hb.student.dtos.StudentInfoDto;
 import com.min.hb.student.model.IService_Student;
@@ -76,6 +77,7 @@ public class StudentInfoCtrl {
 	 * @return
 	 * @throws IOException
 	 */
+	@ResponseBody
 	@RequestMapping(value="/updateStdInfo.do", method=RequestMethod.POST)
 	public String updateStudentInfo(StudentInfoDto sdto, 
 			HttpServletResponse response, Model model) throws IOException {
@@ -88,22 +90,22 @@ public class StudentInfoCtrl {
 				service.ChkStudentCode(sdto.getStudent_code()))) {
 			//학생정보수정
 			service.updateStudentInfo(sdto);
-			return "redirect:/studentsInfo.do";
+			return "successUpdate";
 		}else {
 			log.info("수험자 학번 중복: \t > {}");
-			response.setContentType("text/html; charset=UTF-8");
+			//response.setContentType("text/html; charset=UTF-8");
 
-			PrintWriter out = response.getWriter();
+			//PrintWriter out = response.getWriter();
 
-			out.println("<script>alert('이미 존재하는 학번입니다. 다른학번을 다시 입력해주세요.');</script>");
-			out.flush();
+			//out.println("<script>alert('이미 존재하는 학번입니다. 다른학번을 다시 입력해주세요.');</script>");
+			//out.flush();
 			
-			List<StudentInfoDto> stdAllList = service.StudentInfoSelect();
-			model.addAttribute("stdAllList", stdAllList); //학생들 리스트
-			log.info("StudentCtrl 학생들 정보 목록 조회 : \t > {}");
-			
-			return "student/studentsInfoForm";
+//			List<StudentInfoDto> stdAllList = service.StudentInfoSelect();
+//			model.addAttribute("stdAllList", stdAllList); //학생들 리스트
+//			log.info("StudentCtrl 학생들 정보 목록 조회 : \t > {}");
+			return "failUpdate";
 		}
+	
 	}
 	
 	/**

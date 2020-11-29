@@ -102,7 +102,7 @@
 
          <div id="chkEmail">
             <div class="form-group">
-               <input type="button" onsubmit="sendEmail();" id="sendE"
+               <input type="button" id="sendE"
                   value="이메일 전송" />
             </div>
          </div>
@@ -135,7 +135,7 @@
          <h2>학생 수정</h2>
          
             <div>
-               <button id="close__button2" class="close__button" type="button">X</button>
+               <button id="close__button2" class="close__button" type="button" data-dismiss='modal'>X</button>
                <div>
                	  <input type="hidden" name="seq" class="student__input edit__input">
                   <label for="">학번</label> <input type="number"
