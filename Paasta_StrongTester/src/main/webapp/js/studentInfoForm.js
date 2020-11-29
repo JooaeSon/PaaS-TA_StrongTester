@@ -67,11 +67,6 @@ function sendEmail(stdArray) {
 }
 
 
-
-
-
-
-
 function checkIt(stdCode){
    alert(stdCode);
    showInfo(stdCode);
@@ -199,13 +194,13 @@ const $editBtns = document.querySelectorAll('.edit__btn');
 const $closeBtn2 = document.querySelector('#close__button2');
 $closeBtn2.addEventListener('click', (e) => {
 e.target.parentNode.parentNode.parentNode.style.display = 'none';
-
+location.href="./studentsInfo.do";
 });
+
+const $studentInput = document.querySelectorAll('.edit__input');
 for (let i = 0; i < $editBtns.length; i++){
 $editBtns[i].addEventListener('click', () => {
  $editModal.style.display='block';
- const $studentInput = document.querySelectorAll('.edit__input');
-
 
  $studentInput.value = $editBtns[i].value;
  $tr = $editBtns[i].parentNode.parentNode; // tr
@@ -221,8 +216,56 @@ $editBtns[i].addEventListener('click', () => {
 
 const $confirmEditBtn = document.querySelector('#confirm-edit__button');
 $confirmEditBtn.addEventListener('click', (e) => {
-	swal("수정완료!", {
-	      icon: "success",
-	      buttons: true
-	    });
+	$.ajax({
+		url:"./updateStdInfo.do",
+		type:"post",
+		data:"seq="+$studentInput[0].value+"&student_code="+$studentInput[1].value+
+		"&student_deptm="+$studentInput[2].value+"&student_name="+$studentInput[3].value+
+		"&student_email="+$studentInput[4].value+"&test_flag="+$studentInput[5].value,
+		success:function(msg){
+			if(msg=="successUpdate"){
+				alert("ddd");
+				swal({
+					title:"수정완료!",
+					text:"",
+				    type: "success",
+				    showCancelButton: false,
+				    confirmButtonText:"OK",
+				    closeOnConfirm: true
+				
+				 }, function(isConfirm){
+					 if(isConfirm){
+						 alert("들어왓");
+						 goAllList();
+					 }
+				 });
+				 
+			}else{
+				swal({
+					title:"이미 존재하는 학번입니다.",
+					text: "다른학번을 다시 입력해주세요.",
+					type: "info",
+					showCancelButton: false,
+					confirmButtonText:"OK",
+				    closeOnConfirm: true
+				  
+				 }, function(isConfirm){
+					 if(isConfirm){
+						 alert("들어왓");
+						 goAllList();
+					 }
+				 });
+				
+			}
+			
+		},
+		error:function(){
+			alert("잘못된 요청입니다.");
+		}
+	});
+
 });
+
+function goAllList(){
+	location.href="./studentsInfo.do";
+}
