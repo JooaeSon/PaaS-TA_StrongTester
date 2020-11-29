@@ -148,4 +148,10 @@ public class DaoImpl_Student implements IDao_Student {
 		return cnt>0? true:false;
 	}
 
+	@Override
+	public Map<String, Object> selectTestTime() {
+		log.info("DaoImpl_selectTestTime 시험시간 조회 (시작시간, 종료시간):{}");
+		return session.selectOne(NS+"selectTestTime");
+	}
+
 }
