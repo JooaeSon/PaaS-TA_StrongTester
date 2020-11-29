@@ -275,6 +275,6 @@ th {
 .webcam{
 	background-color: #f4f7f8;
 	height: 100px;
-
+	padding: 30px;
 	color: var(--color-light-grey);
 }

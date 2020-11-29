@@ -98,11 +98,16 @@ const $stdNameInput = document.querySelector('#std-name__input');
 const $stdEmailInput = document.querySelector('#std-email__input');
 
 
-$stdNumInput.addEventListener('keydown', (e)=>{
-  if ($stdNumInput.value.length >= 8){ // 학번 글자 수 제한
-    $stdNumInput.value = $stdNumInput.value.substring(0, 8);
-  } 
+$stdNumInput.addEventListener('keydown', ()=>{
+	limitStdNum($stdNumInput);
 });
+
+//학번 글자수 입력 제한
+function limitStdNum(input){
+	if (input.value.length >= 8){
+		input.value = input.value.substring(0, 8); 
+	}
+}
 
 // 학생 추가
 $addBtn.addEventListener('click', ()=>{
@@ -202,8 +207,11 @@ $closeBtn2.addEventListener('click', (e) => {
 });
 
 const $studentInput = document.querySelectorAll('.edit__input');
+
+
 for (let i = 0; i < $editBtns.length; i++){
 $editBtns[i].addEventListener('click', () => {
+	
  $editModal.style.display='block';
 
  $studentInput.value = $editBtns[i].value;
@@ -215,7 +223,6 @@ $editBtns[i].addEventListener('click', () => {
  for (let i = 1 ; i < 6; i++){    
    $studentInput[i].value = tr[i].innerHTML;
  }
-
 })};
 
 const $confirmEditBtn = document.querySelector('#confirm-edit__button');
@@ -268,9 +275,10 @@ else{
     $time__display.innerHTML = `<i class="far fa-clock"></i> ${sh}시 ${sm}분 ~ ${eh}시 {em}분`;
 }
 */
+
 sh = 1;
 sm = 2;
 eh = 1;
 em = 22;
-$time__display.innerHTML = `<i class="far fa-clock"></i> 2020-01-01 | ${sh}시 ${sm}분 ~ ${eh}시 ${em}분`;
+$time__display.innerHTML = `<i class="far fa-clock"></i> 2020-01-01  ${sh}시 ${sm}분 ~ ${eh}시 ${em}분`;
 
