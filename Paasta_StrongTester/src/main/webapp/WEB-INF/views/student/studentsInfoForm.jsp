@@ -50,6 +50,7 @@
 
          <div id="set__time">
             <button id="set-time__button">시험 시간 설정</button>
+            <span id="time__display"></span>
          </div>
          <div id="student__add__article">
 
@@ -116,14 +117,15 @@
          <div>
             <button id="close__button" class="close__button" type="button">X</button>
             <label for="">시작</label> <input id="start-time"
-               type="datetime-local"> <label for="">종료</label> <input
+               type="datetime-local"><label for="">종료</label> <input
                id="end-time" type="time">
-            <div>
+          
+
+         </div>
+           <div>
                <button id="confirm-time__button" class="confirm__button">확인</button>
 
             </div>
-
-         </div>
       </article>
    </section>
 
@@ -161,7 +163,7 @@
 
             </div>
              <div>
-                  <button type="submit" id="confirm-edit__button" class="confirm__button">확인</button>
+                  <button type="button" id="confirm-edit__button" class="confirm__button">확인</button>
                </div>
          </form>
       </article>
