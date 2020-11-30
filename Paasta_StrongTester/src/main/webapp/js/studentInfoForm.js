@@ -276,9 +276,10 @@ else{
 }
 */
 
+/*
 sh = 1;
 sm = 2;
 eh = 1;
 em = 22;
 $time__display.innerHTML = `<i class="far fa-clock"></i> 2020-01-01  ${sh}시 ${sm}분 ~ ${eh}시 ${em}분`;
-
+*/

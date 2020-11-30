@@ -50,7 +50,7 @@
 
          <div id="set__time">
             <button id="set-time__button">시험 시간 설정</button>
-            <span id="time__display"></span>
+            <span id="time__display"><i class="far fa-clock"></i> ${date} ${sh}시 ${sm}분 ~ ${eh}시 ${em}분</span>
          </div>
          <div id="student__add__article">
 

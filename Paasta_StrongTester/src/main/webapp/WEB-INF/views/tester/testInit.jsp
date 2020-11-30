@@ -22,7 +22,8 @@
 	<section class="container">
 		<form id="frm" method="post">
 			<h3>인공지능</h3>
-			<h4>시험 시간: <span id="test__time">10:00 ~ 11:00</span></h4>
+			<h4>시험 응시일: <span id="test__day">${date}</span></h4>
+			<h4>시험 시간: <span id="test__time">${Stime}-${Etime}</span></h4>
 		
 			<h4>학교명: 숭실대학교</h4>
 			<div>
