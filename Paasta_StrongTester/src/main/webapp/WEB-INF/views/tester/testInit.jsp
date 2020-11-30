@@ -11,7 +11,7 @@
 	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
 	rel="stylesheet" />
 </head>
-<script type="text/javascript" src="./js/testLogin.js"></script>
+<script type="text/javascript" src="./js/testLogin.js" defer></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <body>
@@ -22,8 +22,8 @@
 	<section class="container">
 		<form id="frm" method="post">
 			<h3>인공지능</h3>
-			<h4>시험 시간: 10:00 ~ 11:00</h4>
-			<h4>시험 시간: 60분</h4>
+			<h4>시험 시간: <span id="test__time">10:00 ~ 11:00</span></h4>
+		
 			<h4>학교명: 숭실대학교</h4>
 			<div>
 				<input type="text" id="inputName" name="student_name" placeholder="이름" autofocus />

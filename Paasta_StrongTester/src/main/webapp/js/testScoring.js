@@ -1,5 +1,5 @@
-$questionList = document.querySelectorAll(".question__content");
-$correctAnswerList = document.querySelectorAll(".answer-correct__text");
+const $questionList = document.querySelectorAll(".question__content");
+const $correctAnswerList = document.querySelectorAll(".answer-correct__text");
 ajax();
 console.log($correctAnswerList);
 //문제 불러오기
@@ -15,4 +15,11 @@ function ajax() {
   });
   oReq.open("GET", "./js/question-json.txt"); // key
   oReq.send();
+}
+
+
+const $webCamList = document.querySelector('.webcam');
+if ($webCamList.childElementCount === 0){
+	$webCamList.innerText = '기록된 영상이 없습니다.';
+	
 }

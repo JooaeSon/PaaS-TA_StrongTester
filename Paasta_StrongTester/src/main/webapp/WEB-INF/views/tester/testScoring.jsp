@@ -22,15 +22,17 @@
   </head>
   <body>
     <nav id="navbar">
-<h3>인공지능</h3>
+<h3><i class="fas fa-pencil-alt"></i>인공지능</h3>
       <div>
 
-          <a href="./home.do"><button class="home__button"><i class="fas fa-home"></i></button></a>
+          <a href="./home.do"><button class="nav__button"><i class="fas fa-home"></i></button></a>
+          <a href="./studentsInfo.do"><button class="nav__button"><i class="fas fa-bars"></i></button></a>
          
        </div>
     </nav>
 
     <section class="section">
+    <article class="section__container">
       <table id="student__info">
         <tr cols="3">
           <td colspan="3">학생정보</td>
@@ -61,11 +63,12 @@
         </tr>
       </table>
       
-      <div>웹캠 기록내역</div>
+      <h3 id="webcam-title">웹캠 기록내역</h3>
       <article class="webcam">
       <c:forEach var="link" items="${linklst}" varStatus="vs">
      <video width="300" height="300" src="./video/${link}" controls autoplay></video>	
       </c:forEach>
+      </article>
       </article>
     </section>
     
