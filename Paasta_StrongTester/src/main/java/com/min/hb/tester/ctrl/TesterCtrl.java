@@ -207,10 +207,11 @@ public class TesterCtrl {
 
 	/**
 	 * 학생들이 수험 응시 확인과 시작하는 첫 화면
+	 * @param model
 	 * @return 수험자 응시 로그인 화면
 	 */
 	@RequestMapping(value="/tester.do", method=RequestMethod.GET)
-	public String testPageInit() {
+	public String testPageInit(Model model) {
 		log.info("TestCtrl 수험자들의 응시 로그인 화면: \t > {}");
 		//시험 시간 조회
 		Map<String, Object> timeMap=service.selectTestTime();
@@ -219,6 +220,15 @@ public class TesterCtrl {
 		String test_end=(String) timeMap.get("TEST_END");
 		log.info("test_start 시작시간: \t >{}", test_start);
 		log.info("test_end 종료시간: \t >{}", test_end);
+		
+		String date=test_start.substring(0, test_start.indexOf("T"));
+		String Stime=test_start.substring(test_start.indexOf("T")+1);
+		String Etime=test_end.substring(test_end.indexOf("T")+1);
+		log.info(date+"T"+Stime+"~"+Etime);
+		
+		model.addAttribute("date", date);
+		model.addAttribute("Stime", Stime);
+		model.addAttribute("Etime", Etime);
 		
 		return "tester/testInit";
 	}
