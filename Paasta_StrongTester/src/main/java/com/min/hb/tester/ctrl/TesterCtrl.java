@@ -212,7 +212,14 @@ public class TesterCtrl {
 	@RequestMapping(value="/tester.do", method=RequestMethod.GET)
 	public String testPageInit() {
 		log.info("TestCtrl 수험자들의 응시 로그인 화면: \t > {}");
-
+		//시험 시간 조회
+		Map<String, Object> timeMap=service.selectTestTime();
+		System.out.println("timeMap"+timeMap);
+		String test_start=(String) timeMap.get("TEST_START");
+		String test_end=(String) timeMap.get("TEST_END");
+		log.info("test_start 시작시간: \t >{}", test_start);
+		log.info("test_end 종료시간: \t >{}", test_end);
+		
 		return "tester/testInit";
 	}
 
