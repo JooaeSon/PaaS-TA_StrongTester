@@ -4,6 +4,7 @@ const $timeDisplay = document.querySelector('#test__time');
 // TODO: DB에서 시간 가져오기
 
 // 임시값
+/*
 y = 2020
 m = 01
 d = 12
@@ -13,7 +14,7 @@ eh = 02
 em = 22
 $timeDisplay.innerText = `${y}년 ${m}월 ${d}일 ${sh}시 ${sm}분 ~ ${eh}시 ${em}분`;
 
-
+*/
 
 
 
