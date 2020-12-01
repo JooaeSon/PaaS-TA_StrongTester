@@ -120,6 +120,7 @@ const $setTimeBtn = document.querySelector('#set-time__button');
 const $modal = document.querySelector('.modal');
 $setTimeBtn.addEventListener('click', () => {
   $modal.style.display = 'block';
+	getCurrentTime();
 });
 
 //모달 닫기
@@ -133,12 +134,55 @@ const $confirmTimeBtn = document.querySelector('#confirm-time__button');
 const $startTime = document.querySelector('#start-time');
 const $endTime = document.querySelector('#end-time');
 
+// 현재 시간 값을 가져옴
+function getCurrentTime(){ 
+	let now = new Date();
+	let nowYear = now.getFullYear();
+	let nowMonth = now.getMonth() + 1 + '';
+	let nowDate = now.getDate() + '';
+	
+	let nowH = now.getHours() + '';
+	let nowM = now.getMinutes() + '';
+	
+	nowMonth = nowMonth.length >= 2 ? nowMonth : '0' + nowMonth;
+	nowDate = nowDate.length >= 2 ? nowDate : '0' + nowDate;
+	nowH = nowH.length >= 2 ? nowH : '0' + nowH;
+	nowM =  nowM.length >= 2 ? nowM : '0' + nowM;
+	$startTime.setAttribute('min', `${nowYear}-${nowMonth}-${nowDate}T${nowH}:${nowM}`);
+	
+	return [nowYear, nowMonth, nowDate, nowH, nowM];
+}
+
+function timeValid(){
+	let startTime = $startTime.value.split('T')[1].split(':');  // 시작 시간
+	let startDate = $startTime.value.split('T')[0].split('-'); // 시험 날짜
+	let curTime = getCurrentTime(); // 현재 시간
+
+	// 날짜다르면 return True
+	if(curTime[1] != startDate[1] && curTime[2] != startDate[2]){
+		return true
+	}
+	
+	
+	// 날짜확인
+	if (startTime[0] < curTime[3] || (startTime[0] === curTime[3] && startTime[1] < curTime[4])) {
+		return false;
+	  }	
+	else{
+		return true;
+	}
+}
+
+
 $confirmTimeBtn.addEventListener('click', () => {
+
 	if ($startTime.value == '' || $endTime.value == ''){
 		swal('','시간을 선택해 주세요.','info');	
 	}
-	else{
-		
+	else if (!timeValid()){
+		 swal('','시작 시간은 현재시간 이후여야 합니다.','info');
+	}
+	else{	
 	  startDate = $startTime.value.split('T')[0].split('-'); // 날짜
 	  year = startDate[0];
 	  month = startDate[1];
@@ -156,7 +200,6 @@ $confirmTimeBtn.addEventListener('click', () => {
 		  swal('','시작 시간은 종료시간 이전이어야 합니다.', 'info');
 	  }
 	  else{
-	    // TODO: 날짜를 DB에 저장해야됨.
 	    alert(`${year}-${month}-${day} ${startH}시 ${startM}분 ~ ${endH}시 ${endM}분`);
 	    var startTest=""+year+"-"+month+"-"+day+"T"+startH+":"+startM+"";
 	    var endTest=""+year+"-"+month+"-"+day+"T"+endH+":"+endM+"";
@@ -169,14 +212,12 @@ $confirmTimeBtn.addEventListener('click', () => {
 
 //학생 삭제
 function del(stdCode){
-   //alert(stdCode);
    location.href="./deleteStudent.do?student_code="+stdCode;
 }
 
 const $deleteBtns = document.querySelectorAll('.delete__btn');
 for (let i = 0; i < $deleteBtns.length ; i++){
   $deleteBtns[i].addEventListener('click', () => {
-    // TODO: db에서 삭제
 	stdCode=$deleteBtns[i].value;
     swal({
     	  title: "Are you sure?",
@@ -235,7 +276,6 @@ $confirmEditBtn.addEventListener('click', (e) => {
 		"&student_email="+$studentInput[4].value+"&test_flag="+$studentInput[5].value,
 		success:function(msg){
 			if(msg=="successUpdate"){
-				//alert("ddd");
 				swal('수정 완료', '수정되었습니다.','success');
 				
 				let $confirmBtn = document.querySelector('.swal-button--confirm');
