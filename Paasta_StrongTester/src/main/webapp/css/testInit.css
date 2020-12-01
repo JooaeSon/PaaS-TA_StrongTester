@@ -117,8 +117,9 @@ nav {
   line-height: 40px;
   background-color: var(--color-light-blue);
   border: none;
+  
   color: white;
-  cursor: pointer;
+  
 }
 
 
@@ -174,4 +175,14 @@ input[type="number"]::-webkit-inner-spin-button {
   border: none;
   padding: 0;
   background-color: var(--color-blue);
+}
+
+.disabled{
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.active{
+	opacity: 1;
+	cursor: pointer;
 }
