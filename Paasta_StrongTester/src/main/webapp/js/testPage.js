@@ -1,6 +1,5 @@
 
 "use strict";
-
 const $saveBtn = document.querySelector("#save");
 const $answer = document.querySelector("#answer1");
 const $saveAlert = document.querySelector("#save__alert");
@@ -205,12 +204,13 @@ function ajaxExample() {
     "10": answer[9]
   };
 
-  // localStorage 비우기
-  localStorage.removeItem("isFirstVisit");
-  for (var i = 1; i <= 10; i++) {
-    localStorage.removeItem(`answer${i}`);
-  }
-  
+  cleanLocalStorage();
+//  // localStorage 비우기
+//  localStorage.removeItem("isFirstVisit");
+//  for (var i = 1; i <= 10; i++) {
+//    localStorage.removeItem(`answer${i}`);
+//  }
+//  localStorage.removeItem('endTime');
   
   allData = JSON.stringify(allData);
   $.ajax({
@@ -232,6 +232,17 @@ function ajaxExample() {
     },
   });
 }
+
+function cleanLocalStorage(){
+	  // localStorage 비우기
+	  localStorage.removeItem("isFirstVisit");
+	  for (var i = 1; i <= 10; i++) {
+	    localStorage.removeItem(`answer${i}`);
+	  }
+	  localStorage.removeItem('endTime');
+	
+}
+
 //////////
 const $cancelBtn = document.querySelector("#cancel");
 $cancelBtn.addEventListener("click", () => {
@@ -243,9 +254,13 @@ document.oncontextmenu = function (e) {
   return false;
 };
 
-//////////타이머
+//타이머
+const monthDic = { 1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 
+	      7: 'July', 8: 'August', 9: 'September' , 10: 'October', 11: 'November', 12: 'December'};
+
+var endTimeVal = JSON.parse(localStorage.getItem('endTime'));
+var endTime = new Date(`${monthDic[endTimeVal['month']]} ${endTimeVal['date']}, ${endTimeVal['year']} ${endTimeVal['hour']}:${endTimeVal['minute']}:00`);
 var nowTime = new Date();
-var endTime = new Date("October 20, 2021 01:00:30");
 var diff = endTime.getTime() - nowTime.getTime();
 
 function leftTimeCalculate(millisec) {
@@ -256,13 +271,16 @@ function leftTimeCalculate(millisec) {
     hours = Math.floor(minutes / 60);
     hours = hours >= 10 ? hours : "0" + hours;
     minutes = minutes - hours * 60;
-    minutes = minutes >= 10 ? minutes : "0" + minutes;
   }
+  minutes = minutes >= 10 ? minutes : "0" + minutes;
 
   seconds = Math.floor(seconds % 60);
   seconds = seconds >= 10 ? seconds : "0" + seconds;
   if (hours != "") {
     return hours + "시간 " + minutes + "분 " + seconds + "초";
+  }
+  else if(minutes == "00"){
+	  return seconds + "초"; 
   }
   return minutes + "분 " + seconds + "초";
 }
@@ -272,9 +290,16 @@ let timer = setInterval(function () {
   var nowTime = new Date();
   var diff = endTime.getTime() - nowTime.getTime();
   let time = leftTimeCalculate(diff);
+  if (time < 0){
+	  $timeLeft.innerText = `시험 종료`;
+  }
+  else{
   $timeLeft.innerText = `종료까지 남은 시간:  ${time}`;
+  }
   if (diff <= 0) {
+	  
     clearInterval(timer);
+    cleanLocalStorage();
     window.location.href = "./testAftersummit.do"; // 시간 끝나고 자동으로 이동
   }
 }, 1000);
