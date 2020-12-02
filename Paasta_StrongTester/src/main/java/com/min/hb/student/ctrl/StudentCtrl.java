@@ -44,22 +44,23 @@ public class StudentCtrl {
 		//시험 시간 조회
 		Map<String, Object> timeMap=service.selectTestTime();
 		System.out.println("timeMap"+timeMap);
-		String test_start=(String) timeMap.get("TEST_START");
-		String test_end=(String) timeMap.get("TEST_END");
-		log.info("test_start 시작시간: \t >{}", test_start);
-		log.info("test_end 종료시간: \t >{}", test_end);
-
-		String date=test_start.substring(0, test_start.indexOf("T"));
-		String Stime=test_start.substring(test_start.indexOf("T")+1);
-		String Etime=test_end.substring(test_end.indexOf("T")+1);
-		log.info(date+"T"+Stime+"~"+Etime);
-		
-		model.addAttribute("date", date);
-		model.addAttribute("sh", Stime.substring(0, Stime.indexOf(":")));
-		model.addAttribute("sm", Stime.substring(Stime.indexOf(":")+1));
-		model.addAttribute("eh", Etime.substring(0, Etime.indexOf(":")));
-		model.addAttribute("em", Etime.substring(Etime.indexOf(":")+1));
-		
+		if(timeMap != null) {
+			String test_start=(String) timeMap.get("TEST_START");
+			String test_end=(String) timeMap.get("TEST_END");
+			log.info("test_start 시작시간: \t >{}", test_start);
+			log.info("test_end 종료시간: \t >{}", test_end);
+	
+			String date=test_start.substring(0, test_start.indexOf("T"));
+			String Stime=test_start.substring(test_start.indexOf("T")+1);
+			String Etime=test_end.substring(test_end.indexOf("T")+1);
+			log.info(date+"T"+Stime+"~"+Etime);
+			
+			model.addAttribute("date", date);
+			model.addAttribute("sh", Stime.substring(0, Stime.indexOf(":")));
+			model.addAttribute("sm", Stime.substring(Stime.indexOf(":")+1));
+			model.addAttribute("eh", Etime.substring(0, Etime.indexOf(":")));
+			model.addAttribute("em", Etime.substring(Etime.indexOf(":")+1));
+		}
 		log.info("StudentCtrl 학생들 정보 목록 조회 : \t > {}");
 		List<StudentInfoDto> stdAllList = service.StudentInfoSelect();
 		model.addAttribute("stdAllList", stdAllList); //학생들 리스트

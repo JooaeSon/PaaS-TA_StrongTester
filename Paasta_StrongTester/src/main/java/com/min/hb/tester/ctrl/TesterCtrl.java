@@ -215,21 +215,22 @@ public class TesterCtrl {
 		log.info("TestCtrl 수험자들의 응시 로그인 화면: \t > {}");
 		//시험 시간 조회
 		Map<String, Object> timeMap=service.selectTestTime();
-		System.out.println("timeMap"+timeMap);
-		String test_start=(String) timeMap.get("TEST_START");
-		String test_end=(String) timeMap.get("TEST_END");
-		log.info("test_start 시작시간: \t >{}", test_start);
-		log.info("test_end 종료시간: \t >{}", test_end);
-		
-		String date=test_start.substring(0, test_start.indexOf("T"));
-		String Stime=test_start.substring(test_start.indexOf("T")+1);
-		String Etime=test_end.substring(test_end.indexOf("T")+1);
-		log.info(date+"T"+Stime+"~"+Etime);
-		
-		model.addAttribute("date", date);
-		model.addAttribute("Stime", Stime);
-		model.addAttribute("Etime", Etime);
-		
+		if(timeMap!=null) {
+			System.out.println("timeMap"+timeMap);
+			String test_start=(String) timeMap.get("TEST_START");
+			String test_end=(String) timeMap.get("TEST_END");
+			log.info("test_start 시작시간: \t >{}", test_start);
+			log.info("test_end 종료시간: \t >{}", test_end);
+			
+			String date=test_start.substring(0, test_start.indexOf("T"));
+			String Stime=test_start.substring(test_start.indexOf("T")+1);
+			String Etime=test_end.substring(test_end.indexOf("T")+1);
+			log.info(date+"T"+Stime+"~"+Etime);
+			
+			model.addAttribute("date", date);
+			model.addAttribute("Stime", Stime);
+			model.addAttribute("Etime", Etime);
+		}
 		return "tester/testInit";
 	}
 
