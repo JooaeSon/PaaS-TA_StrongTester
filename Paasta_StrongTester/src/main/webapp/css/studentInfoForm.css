@@ -475,3 +475,19 @@ margin-right: 5px;
 .modal__content label{
 	margin:auto 10px;
 }
+
+.select__tested {
+  width: 150px;
+  padding: 5px 16px;
+  border-radius: 4px;
+  margin: 10px;
+}
+
+#updateStudentInfo h2{
+	margin-bottom: 20px;
+}
+
+#confirm-edit__button{
+	margin-top: 20px;
+}
+
