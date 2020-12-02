@@ -307,8 +307,8 @@ public class TesterCtrl {
 
 
 			log.info(student_code+"님 시험 응시가 시작되었습니다.");
-			out.println("<script>alert('시험 응시가 시작되었습니다.');</script>");
-			out.flush();
+			//out.println("<script>alert('시험 응시가 시작되었습니다.');</script>");
+			//out.flush();
 			
 			///////////////
 			//<웹캠이 켜지는 순간>
@@ -398,6 +398,12 @@ public class TesterCtrl {
 		for(Map<String, Object> video : videolist) {
 			service.InsertVideo(video);
 		}
+		//인식종료
+		/////////////////////
+		//r_timer.cancel();
+		//m_timer.cancel();
+		//capture.release();
+		/////////////////////
 		//세션 제거
 		if(session.getAttribute("student_code") !=null) {
 			log.info("session 제거 완료");
