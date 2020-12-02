@@ -3,26 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <title>500 ERROR PAGE</title>
-<style type="text/css">
-body {
-   margin-left: 0px;
-   margin-top: 0px;
-   margin-right: 0px;
-   margin-bottom: 0px;
-}
-</style>
+<link
+	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+	rel="stylesheet" />
+<link rel="icon" type="img/png" href="img/favicon.png" />
+<link rel="stylesheet" href="./css/405.css" />
 </head>
 <body>
-
-   <div style="text-align: center; margin-top: 150px;">
-      <img src="https://db.kosbi.re.kr/error/500-error.gif"
-         usemap="#errormap"></img>
-	
-	<!-- 500에러 뜨고나서 다시 돌아 갈수 있도록 링크 걸어주기(아래 코드) ./~~do는 서버 컨트롤러를 거쳐서 간다는 이야기 -->
-      <map name="errormap">
-         <area shape="rect" coords="80,240,230,300" href="./home.do">
-      </map>
-   </div>
-
+	<section class="section">
+		<article>
+			<h2>우리 홈페이지에서 지원하지 않는 경로입니다.</h2>
+		</article>
+		<article>
+			<img alt="500에러" src="./img/500.jpg">
+		</article>
+		<div>
+			<button class="home__btn" onClick="location.href='home.do'"
+				style="margin: 8px auto;">홈으로 이동</button>
+		</div>
+	</section>
 </body>
 </html>
