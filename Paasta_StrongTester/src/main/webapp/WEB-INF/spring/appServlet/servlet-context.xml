@@ -27,7 +27,19 @@
 		<property name="suffix" value=".jsp" />
 		<property name="order" value="1" />
 	</bean>
-
 	
+	<mvc:interceptors>
+		<!-- 1.테스트 시작 interceptor -->
+		<mvc:interceptor>
+			<mvc:mapping path="/tester.do"/>
+			<bean class="com.min.hb.interceptor.testStartInterceptor"/>
+		</mvc:interceptor>
+		
+		<!-- 2.테스트 종료 interceptor -->
+		<mvc:interceptor>
+			<mvc:mapping path="/testAftersummit.do"/>
+			<bean class="com.min.hb.interceptor.testEndInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 	<tx:annotation-driven proxy-target-class="true" />
 </beans>
