@@ -9,7 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/png" href="images/favicon.png" />
+   <link rel="icon" type="img/png" href="img/favicon.png" />
     <link rel="stylesheet" href="./css/testPage.css" />
   </head>
   <body>

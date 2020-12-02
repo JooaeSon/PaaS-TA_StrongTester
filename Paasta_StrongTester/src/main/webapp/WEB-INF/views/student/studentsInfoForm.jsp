@@ -117,9 +117,11 @@
          <div>
             <button id="close__button" class="close__button" type="button">X</button>
             <label for="">시작</label> <input id="start-time"
-               type="datetime-local"><label for="">종료</label> <input
-               id="end-time" type="time">
+               type="datetime-local"  required>
+               <br><label for="">종료</label> <input
+               id="end-time" type="time" required>
           
+                  
 
          </div>
            <div>
