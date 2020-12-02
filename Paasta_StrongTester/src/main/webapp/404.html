@@ -3,23 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <title>404 ERROR PAGE</title>
-<style type="text/css">
-div{
-	margin: 10% auto;
-	width: 600px;
-	text-align: center;
-}
-img{
-	width: 512px;
-}
-</style>
+<link
+	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+	rel="stylesheet" />
+<link rel="icon" type="img/png" href="img/favicon.png" />
+<link rel="stylesheet" href="./css/405.css" />
 </head>
 <body>
-<div>
-	<h2>우리 홈페이지에서 지원하지 않는 경로입니다.</h2>
-	<img alt="404에러" src="./img/404.jpg">
-	<!-- 바로 밑에 코드는 나중에 404 에러 떳을 때 홈으로 이동 링크 누르면 메인 화면으로 돌아가도록 설정 -->
-	<a href="./home.do">홈으로 이동</a>
-</div>
+
+<section class="section">
+		<article>
+			<h2>우리 홈페이지에서 지원하지 않는 경로입니다.</h2>
+		</article>
+
+		<article>
+			<img alt="404에러" src="./img/404.jpg">
+
+		</article>
+		<div>
+			<button class="home__btn" onClick="location.href='home.do'">홈으로
+				 이동</button>
+		</div>
+	</section>
+	
+	
 </body>
+
+
 </html>
