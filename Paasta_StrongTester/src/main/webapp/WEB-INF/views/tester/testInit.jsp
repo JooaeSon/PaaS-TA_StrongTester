@@ -14,7 +14,12 @@
 <script type="text/javascript" src="./js/testLogin.js" defer></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+ window.history.forward();
+ function noBack(){window.history.forward();}
+</script>
 <body>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 	<nav id="navbar">
 		<h2 id="title__nav">STRONG TESTER</h2>
 	</nav>

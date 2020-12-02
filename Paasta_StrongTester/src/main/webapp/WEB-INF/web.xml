@@ -18,6 +18,11 @@
   	<location>/404.html</location>
   </error-page>
   
+  <error-page>
+  	<error-code>405</error-code>
+  	<location>/405.html</location>
+  </error-page>
+  
   <!-- needed for ContextLoaderListener -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

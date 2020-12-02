@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>시험지</title>
+<meta charset="UTF-8">
 <link rel="icon" type="img/png" href="img/favicon.png" />
 <link
 	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
@@ -14,8 +15,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/12ed482fdd.js" crossorigin="anonymous"></script>
 <script src="./js/testPage.js" defer></script>
+<script type="text/javascript">
+ window.history.forward();
+ function noBack(){window.history.forward();}
+</script>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
+	<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 	<nav id="navbar">
 		<h2 id="title__nav">과목명: 인공지능</h2>
 		<span> <span id="time-left">종료까지 남은 시간: 00분 00초</span>
