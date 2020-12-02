@@ -1,5 +1,4 @@
 package com.min.hb.interceptor;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
