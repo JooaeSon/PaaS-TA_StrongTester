@@ -4,6 +4,8 @@ SELECT * FROM STUDENT;
 SELECT * FROM STUDENTCAPTURE;
 SELECT * FROM STUDENTANSWER order by student_code;
 
+update tester set TEST_START=null , TEST_END=null;
+
 select student_uuid from student where STUDENT_CODE='20162579';
 
 update student set STUDENT_UUID ='a1248d71-6fd7-4079-b9ff-1c1ed77ea8a5';
