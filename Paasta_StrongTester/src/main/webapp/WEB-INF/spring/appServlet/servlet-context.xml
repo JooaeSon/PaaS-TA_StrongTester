@@ -34,13 +34,13 @@
 		<!-- 1. 시험시작하는 인터셉터 -->
 		<mvc:interceptor>
 			<mvc:mapping path="/tester.do" />
-			<bean class="com.min.hb.interceptor.testInterceptor" />
+			<bean class="com.min.hb.interceptor.testStartInterceptor" />
 		</mvc:interceptor>
 	
 		<!-- 2. 답안제출 인터셉터 -->
 		<mvc:interceptor>
 			<mvc:mapping path="/testAftersummit.do" />
-			<bean class="com.min.hb.interceptor.interceptor" />
+			<bean class="com.min.hb.interceptor.testEndInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 	<tx:annotation-driven proxy-target-class="true" />
