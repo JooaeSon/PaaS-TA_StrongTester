@@ -31,11 +31,7 @@
 		<mvc:mapping path="/testAftersummit.do"/>
 		<bean class="com.min.hb.interceptor.interceptor"/>
 	</mvc:interceptor>
+
 </mvc:interceptors>
-
-<bean class="org.springframework.web.servlet.mvc.WebContentInterceptor">
-	<property name="cacheSeconds" value="0"/>
-</bean>
-
 <tx:annotation-driven proxy-target-class="true"/>
 </beans>
