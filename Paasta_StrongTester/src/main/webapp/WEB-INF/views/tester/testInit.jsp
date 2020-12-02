@@ -30,13 +30,22 @@
 	<section class="container">
 		<form id="frm" method="post">
 			<h3>인공지능</h3>
-			<h4>시험 응시일: <span id="test__day">${date}</span></h4>
+			<h4>시험 응시일: <span id="test__day">
+			<c:if test="${not empty Stime}">
+		           ${date}
+		    </c:if>
+		    <c:if test="${empty Stime}">
+		         	날짜를 세팅해주세요.
+		    </c:if>
+			
+			
+			</span></h4>
 			<h4>시험 시간: <span id="test__time">
 			<c:if test="${not empty Stime}">
 		           ${Stime} ~ ${Etime}
 		    </c:if>
 		    <c:if test="${empty Stime}">
-		         	시험시간을 세팅해주세요.
+		         	시간을 세팅해주세요.
 		    </c:if>
 			</span></h4>
 			
