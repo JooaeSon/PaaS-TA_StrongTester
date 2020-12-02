@@ -50,7 +50,15 @@
 
          <div id="set__time">
             <button id="set-time__button">시험 시간 설정</button>
-            <span id="time__display"><i class="far fa-clock"></i> ${date} ${sh}시 ${sm}분 ~ ${eh}시 ${em}분</span>
+            <span id="time__display"><i class="far fa-clock"></i> 
+           <c:if test="${not empty date}">
+		            ${date} ${sh}시 ${sm}분 ~ ${eh}시 ${em}분
+		    </c:if>
+		    <c:if test="${empty date}">
+		         시험시간을 세팅해주세요.
+		    </c:if>
+		    </span>
+		            
          </div>
          <div id="student__add__article">
 
