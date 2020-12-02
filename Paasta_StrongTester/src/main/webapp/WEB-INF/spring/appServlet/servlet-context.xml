@@ -31,30 +31,11 @@
 		<mvc:mapping path="/testAftersummit.do"/>
 		<bean class="com.min.hb.interceptor.interceptor"/>
 	</mvc:interceptor>
-	
-	<bean class="org.springframework.web.servlet.mvc.WebContentInterceptor">
-	<!-- servlet에서 header -->
-	<!-- 캐쉬의 저장 시간 초단위 (정보가 지워짐, 일단 페이지는 넘어감...) -->
-		<property name="cacheSeconds" value="0"/><!-- 한방에 지움. 아예 사용 안하겠다는 애기 -->
-		<!-- CacheControlHeader사용 여부 -->
-		<property name="useCacheControlHeader"  value="true"/>
-		<!-- useCacheControlNoStore chacheHeader와 같이 동작되어 no-store 저장하지 않겠냐? -->
-		<property name="useCacheControlNoStore"  value="true"/>
-		<!-- Expires 사용여부 -->
-		<property name="useExpiresHeader"  value="true"/>
-		<!-- 바로 위에 것들 노란줄 뜨는애들은 디폴트라 굳이 안써도 됨 -->
-		<property name="cacheMappings">
-			<props>
-				<!-- 값을 여러개 집어 넣을 떄 -->
-				<prop key="/tester/**">86400</prop><!-- key는 해당 위치의 주소, 값 시간  ///"/img/**"->**은 모든 폴더 모든 파일 -->
-				<!-- 하루동안 값 -->
-			</props>
-		</property>
-	<!-- cache관련은 로그아웃 하고 뒤로가기 했을때 안들어가지게 하려고 지정해줌 -->
-<!-- 값을 여러개 집어넣을 때 props를 통해 배열로 집어넣음 => prop의 key는 해당 위치(주소), 값은 시간을 뜻함 -->
-<!-- <prop key="/img/**">86400</prop> => ** = 모든 폴더, 모든 파일이라는 뜻 , 86400초 , 이미지에 대한 캐시 하루동안 유지시키겠다-->
-	</bean>
 </mvc:interceptors>
+
+<bean class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+	<property name="cacheSeconds" value="0"/>
+</bean>
 
 <tx:annotation-driven proxy-target-class="true"/>
 </beans>
