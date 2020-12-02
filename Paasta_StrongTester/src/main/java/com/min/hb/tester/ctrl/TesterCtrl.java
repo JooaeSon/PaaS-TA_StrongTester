@@ -273,7 +273,7 @@ public class TesterCtrl {
 		response.setContentType("text/html; charset=UTF-8");
 
 		PrintWriter out = response.getWriter();
-		StudentInfoDto mDto = service.TestLogin(sdto);
+		//StudentInfoDto mDto = service.TestLogin(sdto);
 
 
 		String student_code=sdto.getStudent_code(); //나중에 session객체로 받아오기
@@ -286,12 +286,12 @@ public class TesterCtrl {
 		//시험을 아직 응시 하지 않은 학생일 경우
 		if("N".equalsIgnoreCase(service.ChkTestFlag(student_code))) {
 			//session.setAttribute("stdInfo", mDto);
-
+			//세션 담기
 			session.setAttribute("student_code", student_code);
 			session.setAttribute("student_name", student_name);
 			session.setAttribute("student_uuid", student_uuid);
 			log.info("Welcome TestStart.do 시험응시 여부 확인 : \t {}");
-			log.info("Welcome TestStart.do 시험응시 여부 확인 : \t {}", session.getAttribute("stdInfo"));
+			//log.info("Welcome TestStart.do 시험응시 여부 확인 : \t {}", session.getAttribute("stdInfo"));
 			//IP
 			//ChkIp(req, student_code);
 			//아래 ip는 테스트 용입니다.
@@ -346,8 +346,8 @@ public class TesterCtrl {
 		Map<String, Object> answermap = new HashMap<String, Object>();
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		session.getAttribute("stdInfo");
-		StudentInfoDto sdto=new StudentInfoDto();
+		//session.getAttribute("stdInfo");
+		//StudentInfoDto sdto=new StudentInfoDto();
 
 		String student_code=(String) session.getAttribute("student_code");
 		answermap.put("student_code", student_code);
