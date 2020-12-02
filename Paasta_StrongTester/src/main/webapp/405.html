@@ -3,24 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <title>405 ERROR PAGE</title>
-<style type="text/css">
-body {
-   margin-left: 0px;
-   margin-top: 0px;
-   margin-right: 0px;
-   margin-bottom: 0px;
-}
-
-</style>
+<link
+	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+	rel="stylesheet" />
+<link rel="icon" type="img/png" href="img/favicon.png" />
+<link rel="stylesheet" href="./css/405.css" />
 </head>
 <body>
-	<h2>우리 홈페이지에서 지원하지 않는 경로입니다.</h2>
-	<h2>테스트 초기화면으로 이동해주세요</h2>
-   <div style="text-align: center; margin-top: 150px;">
-      <img alt="405에러" src="./img/405.jpg">
-	<!-- 바로 밑에 코드는 나중에 405 에러 떳을 때 홈으로 이동 링크 누르면 메인 화면으로 돌아가도록 설정 -->
-	<a href="./tester.do">테스트 초기화면으로 이동</a>
-   </div>
+	<section class="section">
+		<article>
+			<h2>우리 홈페이지에서 지원하지 않는 경로입니다.</h2>
+			<h2>테스트 초기화면으로 이동해주세요</h2>
+		</article>
 
+		<article>
+			<img alt="405에러" src="./img/405.jpg">
+
+		</article>
+		<div>
+			<button class="home__btn" onClick="location.href='tester.do'">테스트
+				초기화면으로 이동</button>
+		</div>
+	</section>
 </body>
 </html>
