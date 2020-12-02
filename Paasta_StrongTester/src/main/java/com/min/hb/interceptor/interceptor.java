@@ -27,8 +27,8 @@ public class interceptor extends HandlerInterceptorAdapter{ //인터셉터는 co
 		logger.info("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒인터셉터 시작▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
 		
 		try {
-			if(request.getSession().getAttribute("student_code") ==null || 
-					request.getSession().getAttribute("student_name") ==null ||
+			if(request.getSession().getAttribute("student_code") ==null && 
+					request.getSession().getAttribute("student_name") ==null && 
 					request.getSession().getAttribute("student_uuid") ==null) {
 				request.getSession().invalidate();
 				response.sendRedirect("./tester.do");
