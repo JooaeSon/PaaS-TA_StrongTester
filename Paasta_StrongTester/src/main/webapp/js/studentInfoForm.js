@@ -237,6 +237,7 @@ for (let i = 0; i < $deleteBtns.length ; i++){
   });
 }
 
+const $selectYN = document.querySelector('#testedYN');
 
 
 // 학생 정보 수정
@@ -261,9 +262,17 @@ $editBtns[i].addEventListener('click', () => {
  tr = $tr.getElementsByTagName("td");
 
  $studentInput[0].value = tr[1].innerHTML;
- for (let i = 1 ; i < 6; i++){    
+ for (let i = 1 ; i < 5; i++){    
    $studentInput[i].value = tr[i].innerHTML;
+   
  }
+ if (tr[5].innerText == 'Y'){
+	 $selectYN.selectedIndex = 1;
+ }else{
+	 $selectYN.selectedIndex = 0;
+ }
+
+ 
 })};
 
 const $confirmEditBtn = document.querySelector('#confirm-edit__button');
@@ -301,25 +310,3 @@ function goAllList(){
 
 // time display
 const $time__display = document.querySelector('#time__display');
-
-
-/*
-if (DB 시간이 정해져있지 않으면){
-    $time__display.innerText = '';
-}
-else{
-	sh = 시작 시;
-	sm = 시작 분;
-	eh = 끝나는 시;
-	em = 끝나는 분;
-    $time__display.innerHTML = `<i class="far fa-clock"></i> ${sh}시 ${sm}분 ~ ${eh}시 {em}분`;
-}
-*/
-
-/*
-sh = 1;
-sm = 2;
-eh = 1;
-em = 22;
-$time__display.innerHTML = `<i class="far fa-clock"></i> 2020-01-01  ${sh}시 ${sm}분 ~ ${eh}시 ${em}분`;
-*/

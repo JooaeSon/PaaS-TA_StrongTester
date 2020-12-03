@@ -2,9 +2,22 @@
 const $timeDisplay = document.querySelector('#test__time');
 const $dateDisplay = document.querySelector('#test__day');
 const timeVal = $timeDisplay.innerText;
-getStartTime(timeVal);
+const $loginBtn = document.querySelector("#submit__input");
+let isSetTime = true;
 
-/**/
+if(timeVal.indexOf(':') == -1){
+	isSetTime = false;
+}
+
+if (isSetTime){
+  getStartTime(timeVal);
+ 
+}else{
+	$timeDisplay.innerHTML= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';	
+	$dateDisplay.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+}
+
+
 function getTestDate(){
 	
 	let dateVal = $dateDisplay.innerText;
@@ -13,15 +26,10 @@ function getTestDate(){
 	
 }
 function getStartTime(timeVal){
-	
+
 	timeVal = timeVal.split(' ');
-	
-//	let dateVal = $dateDisplay.innerText;
-//	dateVal = dateVal.split('-');
 	let dateVal = getTestDate();
 	let startTime = timeVal[0].split(':');
-	//
-//	let endTime = timeVal[2].split(':');
 	let endTime = getEndTime(timeVal);
 	// 로컬스토리지에 시험 끝나는 시간 저장	
 	let obj = {year: dateVal[0], month: dateVal[1], date: dateVal[2], hour: endTime[0], minute: endTime[1]};
@@ -41,7 +49,7 @@ function getEndTime(timeVal){
 
 /* Timer */
 var nowTime = new Date();
-var startTime = getStartTime(timeVal);
+var startTime = isSetTime ? getStartTime(timeVal) : 00;
 const monthDic = { 1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 
 		7: 'July', 8: 'August', 9: 'September' , 10: 'October', 11: 'November', 12: 'December'};
 
@@ -67,16 +75,22 @@ function leftTimeCalculate(millisec) {
   return minutes + "분 " + seconds + "초";
 }
 
-const $loginBtn = document.querySelector("#submit__input");
-let testStart = false;
 
+let testStart = false;
+console.log(startTime);
 let timer = setInterval(function () {
+
   var nowTime = new Date();
   var diff = startTime.getTime() - nowTime.getTime();
   
   let time = leftTimeCalculate(diff);
   $loginBtn.value = `${time} 후 시작`;
-  if (diff <= 0) { // 시험 시작 시간이 지나면
+  
+  if (!isSetTime){
+	  $loginBtn.value = '입장 불가';
+	  clearInterval(timer);
+  }
+  else if (diff <= 0) { // 시험 시작 시간이 지나면
     clearInterval(timer);
     $loginBtn.value = '시험 입장';
     //isTestEnd();
@@ -85,7 +99,6 @@ let timer = setInterval(function () {
     testStart = true;
   }
   else{
-	  
   }
 }, 1000);
 
@@ -128,7 +141,7 @@ function isTestEnd(){
 function getEndDiff(){
 	let nowTime = new Date();
   let testDate = getTestDate();
-  let endTimeVal = timeVal.split(' ')[2].split(' ')[0].split(':');
+  let endTimeVal = isSetTime? timeVal.split(' ')[2].split(' ')[0].split(':') : 00;
   let endTimeList = [testDate[0], testDate[1], testDate[2], endTimeVal[0], endTimeVal[1]];
   let endTime = new Date(`${monthDic[testDate[1]]} ${testDate[2]}, ${testDate[0]} ${endTimeVal[0]}:${endTimeVal[1]}:00`);
   let diff = endTime.getTime() - nowTime.getTime();

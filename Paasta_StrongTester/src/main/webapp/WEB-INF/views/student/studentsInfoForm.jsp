@@ -165,11 +165,21 @@
                   <label for="">이메일</label> <input type="email"
                      name="student_email" class="student__input edit__input" required>
                </div>
-               <div>
+<!--                <div>
                   <label for="">응시 여부 (Y / N)</label> <input type="text"
                      name="test_flag" class="student__input  edit__input" required>
                </div>
               
+              -->
+              <div>
+                <label for=""class="label__name">응시 여부 (Y / N)</label>
+               <select id="testedYN" class="edit__input student__input select__tested">
+                  
+                  <option value="N" >N</option>
+                  <option  value="Y">Y</option>
+                 
+              </select>
+              </div>
 
             </div>
              <div>
