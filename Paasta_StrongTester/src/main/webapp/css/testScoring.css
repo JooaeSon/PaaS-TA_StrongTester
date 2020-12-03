@@ -167,7 +167,13 @@ th {
 
 .webcam {
   margin-top: 20px;
+  height: 400px;
+  overflow: scroll;
+  background-color: #f4f7f8;
+  padding: 30px;
+  color: var(--color-light-grey);
 }
+
 
 .webcam div {
   margin-left: 10px;
@@ -272,9 +278,3 @@ th {
 	margin-right: 10px;
 }
 
-.webcam{
-	background-color: #f4f7f8;
-	height: 100px;
-	padding: 30px;
-	color: var(--color-light-grey);
-}
