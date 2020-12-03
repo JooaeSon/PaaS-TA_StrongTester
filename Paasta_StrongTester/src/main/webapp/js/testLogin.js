@@ -90,6 +90,7 @@ setInterval(function timer() {
 	    clearInterval(timer);
 	    $loginBtn.value = '시험 입장';
 	    testStart = true;
+	    return;
 	  }
 	  
 	  return timer;
@@ -99,7 +100,7 @@ setInterval(function timer() {
 function isTestEnd(){
 	
    let diff = getEndDiff();
-   //console.log(diff);
+
 	if (diff >= 0){ // 입장 가능
 		$loginBtn.disabled = false;
 		   $loginBtn.classList.add('active');
@@ -108,16 +109,34 @@ function isTestEnd(){
 	}
 	return true;
 }
+//
+//let timerInter = setInterval(function () {
+//	if(testStart && isTestEnd()){ // 시험 끝 입장불가
+//	   clearInterval(timerInter);
+//       $loginBtn.disabled = true;
+//	   $loginBtn.classList.add('disabled');
+//	   $loginBtn.classList.remove('active');
+//	   $loginBtn.value = '시험 종료';
+//		}
+//}, 1000);
 
-let timerInter = setInterval(function () {
+
+setInterval(function timerInter() {
 	if(testStart && isTestEnd()){ // 시험 끝 입장불가
-	   clearInterval(timerInter);
-       $loginBtn.disabled = true;
-	   $loginBtn.classList.add('disabled');
-	   $loginBtn.classList.remove('active');
-	   $loginBtn.value = '시험 종료';
-		}
-}, 1000);
+		   clearInterval(timerInter);
+	       $loginBtn.disabled = true;
+		   $loginBtn.classList.add('disabled');
+		   $loginBtn.classList.remove('active');
+		   $loginBtn.value = '시험 종료';
+			}
+
+	
+	  return timerInter;
+}(), 1000);
+
+
+
+
 
 /* get EndTime List*/
 function getEndDiff(){
