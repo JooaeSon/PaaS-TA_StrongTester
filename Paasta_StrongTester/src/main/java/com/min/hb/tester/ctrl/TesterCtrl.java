@@ -50,7 +50,7 @@ public class TesterCtrl {
 	public static VideoCapture capture;
 	Timer r_timer;
 	Timer m_timer;
-
+	public static boolean isTestEnd = false;
 	public static String stdCode;
 
 
@@ -123,7 +123,10 @@ public class TesterCtrl {
 		
 		// 저장 타이머
 		r_timer = new Timer();
+		
+
 		TimerTask r_task = new TimerTask() {
+			
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
@@ -131,7 +134,15 @@ public class TesterCtrl {
 				Date time = new Date();
 				String time1 = format1.format(time);
 				
-				if (count==0) {      
+				if (isTestEnd) {
+					r_timer.cancel();
+					m_timer.cancel();
+					capture.release();
+					writer.release();
+
+					System.out.println("종료뿡");
+				}
+				else if (count==0) {      
 					System.out.println("0명감지");
 					//./video/주관사id+시험코드+학번+영상번호(시간)
 					String name ="C:\\HappyBugs\\git\\Paasta_StrongTester\\Paasta_StrongTester\\src\\main\\webapp\\video\\SSUITA033212"+stdCode+time1+".mp4";
@@ -403,6 +414,8 @@ public class TesterCtrl {
 		for(Map<String, Object> video : videolist) {
 			service.InsertVideo(video);
 		}
+		
+		isTestEnd = true;
 		//인식종료
 		/////////////////////
 		//r_timer.cancel();
