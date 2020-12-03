@@ -394,7 +394,11 @@ public class TesterCtrl {
 		log.info("TestCtrl_Aftersummit 제출 완료");
 		log.info("시험이 끝났습니다. : \t {}");
 		
-		System.out.println("videolist:"+videolist);
+		log.info("videolist:"+videolist);
+		//인코딩 안된 마지막 영상리스트 제거
+		videolist.remove(videolist.size()-1);
+		log.info("Encoding videolist:"+videolist);
+		
 		//최종 비디오 링크들 저장
 		for(Map<String, Object> video : videolist) {
 			service.InsertVideo(video);
