@@ -1,19 +1,27 @@
-
 "use strict";
 const $saveBtn = document.querySelector("#save");
 const $answer = document.querySelector("#answer1");
 const $saveAlert = document.querySelector("#save__alert");
 var curPos = 0; // 현재 문제 위치
-// 이전, 다음 문제버튼 제어
+
 const $nextBtn = document.querySelector(".next__button");
 const $prevBtn = document.querySelector(".prev__button");
 const $showPage = document.querySelector("#show__page");
+const $questionAnswer = document.querySelector("#answer1");
+const $questionNode = document.querySelector("#question");
+const $questions = document.querySelectorAll(".question__list__item");
+const $questionNumber = document.querySelector("#question__number");
+//displayQuestion();
 
-displayQuestion();
-
-$answer.addEventListener("keydown", () => {
-  $questions[curPos].classList.add("active");
-});
+/* 뒤로 가기 버튼 시 */
+ajax(0);
+$questionAnswer.value = localStorage.getItem('answer1');
+for(let i = 1; i < 11 ; i++){
+	let localAnswer = localStorage.getItem(`answer${i}`);
+	if (localAnswer){
+		  $questions[i-1].classList.add("active");
+	}
+}
 
 //임시저장 localStorge에 초기화
 if (!localStorage.getItem("isFirstVisit")) {
@@ -22,16 +30,30 @@ if (!localStorage.getItem("isFirstVisit")) {
   }
 }
 
+/*
+$answer.addEventListener("keydown", () => {
+  $questions[curPos].classList.add("active");
+});
 
-// 임시 저장 알림
+ * *
+ */
+
+/* 임시 저장 알림 */
 $saveBtn.addEventListener("click", () => {
+	$questions[curPos].classList.add("active");
+	$answer.addEventListener("keydown", () => {
+		  $questions[curPos].classList.add("active");
+		});
+
+	
    localStorage.setItem("isFirstVisit", "Y");
   localStorage.setItem(`answer${curPos + 1}`, $answer.value);
   saveAlertAnimation();
   ajax(curPos - 1);
-  function ajax(i) {
+   function ajax(i) {
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", function (data) {
+
       const obj = JSON.parse(this.response);
       obj.answers[i] = localStorage.getItem(`answer${curPos + 1}`);
     });
@@ -55,8 +77,6 @@ document.addEventListener("keydown", (e) => {
   if ((e.ctrlKey && e.key === "c") || (e.ctrlKey && e.key === "v")) {
     e.returnValue = false;
   }
-
-
 });
 
 $nextBtn.addEventListener("click", () => {
@@ -95,25 +115,22 @@ $(document).ready(function () {
   });
 });
 
-// //ajax
+//ajax
 function ajax(i) {
   var oReq = new XMLHttpRequest();
   oReq.addEventListener("load", function (data) {
     const obj = JSON.parse(this.response);
     $questionNode.innerText = obj.questions[i];
     $questionNumber.innerText = `문제 ${obj.numbers[i]}`;
-    $questionAnswer.innerText = obj.answers[i];
-  });
+
+    $questionAnswer.value = localStorage.getItem(`answer${i+1}`);// 지운부분
+  }); 
   oReq.open("GET", "./js/question-json.txt"); // key
   oReq.send();
 }
 
-//문제에 클릭이벤트
-const $questionNode = document.querySelector("#question");
-const $questions = document.querySelectorAll(".question__list__item");
-const $questionNumber = document.querySelector("#question__number");
-const $questionAnswer = document.querySelector("#answer1");
 
+//문제에 클릭이벤트
 for (let i = 0; i < $questions.length; i++) {
   $questions[i].addEventListener("click", () => {
     curPos = i;
@@ -135,7 +152,6 @@ function displayQuestion() {
   } else {
     $prevBtn.classList.remove("non-active");
   }
-
   $showPage.innerText = `${curPos + 1}/10`;
 }
 
@@ -181,10 +197,9 @@ $confirmBtn.addEventListener("click", () => {
 
   ajaxExample();
 
-  //window.location.href = "./testAfter.jsp"; // 제출후 이동페이지
 });
 
-/////////시험 제출///////////
+/* 시험 제출 */
 function ajaxExample() {
   var answer = [];
   for (var i = 1; i <= 10; i++) {
@@ -205,12 +220,7 @@ function ajaxExample() {
   };
 
   cleanLocalStorage();
-//  // localStorage 비우기
-//  localStorage.removeItem("isFirstVisit");
-//  for (var i = 1; i <= 10; i++) {
-//    localStorage.removeItem(`answer${i}`);
-//  }
-//  localStorage.removeItem('endTime');
+
   
   allData = JSON.stringify(allData);
   $.ajax({
@@ -234,16 +244,14 @@ function ajaxExample() {
 }
 
 function cleanLocalStorage(){
-	  // localStorage 비우기
 	  localStorage.removeItem("isFirstVisit");
 	  for (var i = 1; i <= 10; i++) {
 	    localStorage.removeItem(`answer${i}`);
 	  }
 	  localStorage.removeItem('endTime');
-	
 }
 
-//////////
+
 const $cancelBtn = document.querySelector("#cancel");
 $cancelBtn.addEventListener("click", () => {
   $modal.style.display = "none";
@@ -254,7 +262,7 @@ document.oncontextmenu = function (e) {
   return false;
 };
 
-//타이머
+/* Timer */
 const monthDic = { 1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 
 	      7: 'July', 8: 'August', 9: 'September' , 10: 'October', 11: 'November', 12: 'December'};
 
@@ -297,9 +305,10 @@ let timer = setInterval(function () {
   $timeLeft.innerText = `종료까지 남은 시간:  ${time}`;
   }
   if (diff <= 0) {
-	  
     clearInterval(timer);
     cleanLocalStorage();
-    window.location.href = "./testAftersummit.do"; // 시간 끝나고 자동으로 이동
+    window.location.href = "./testAftersummit.do"; 
   }
 }, 1000);
+
+
