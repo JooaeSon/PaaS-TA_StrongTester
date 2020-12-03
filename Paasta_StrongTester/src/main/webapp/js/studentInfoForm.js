@@ -111,7 +111,7 @@ function limitStdNum(input){
 
 // 학생 추가
 $addBtn.addEventListener('click', ()=>{
-  alert($stdNumInput.value +$stdMajorInput.value+ $stdNameInput.value+$stdEmailInput.value);
+  //alert($stdNumInput.value +$stdMajorInput.value+ $stdNameInput.value+$stdEmailInput.value);
 
 });
 

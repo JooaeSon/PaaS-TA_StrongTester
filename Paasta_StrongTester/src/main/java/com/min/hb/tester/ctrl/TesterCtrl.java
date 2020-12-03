@@ -139,7 +139,12 @@ public class TesterCtrl {
 					m_timer.cancel();
 					capture.release();
 					writer.release();
-
+					if (capture.isOpened()) {
+			            System.out.println("Camera is running!");
+			        }
+			        else {
+			            System.out.println("Camera closed!");
+			        }
 					System.out.println("종료뿡");
 				}
 				else if (count==0) {      
@@ -330,7 +335,7 @@ public class TesterCtrl {
 			nu.pattern.OpenCV.loadLocally();
 			System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);         
 			new TesterCtrl().run();
-
+		
 			return "tester/testPage";
 
 			////////////////
@@ -407,17 +412,15 @@ public class TesterCtrl {
 		
 		log.info("videolist:"+videolist);
 		
-		//인코딩 안된 마지막 영상리스트 제거
 		
-		videolist.remove(videolist.size()-1);
+		//인코딩 안된 마지막 영상리스트 제거
+		//videolist.remove(videolist.size()-1);
 		log.info("Encoding videolist:"+videolist);
 			
 		//최종 비디오 링크들 저장
 		for(Map<String, Object> video : videolist) {
 			service.InsertVideo(video);
 		}
-		
-	
 		isTestEnd = true;
 		//인식종료
 		/////////////////////
@@ -433,14 +436,8 @@ public class TesterCtrl {
 			session.removeAttribute("student_uuid");
 		}
 		
-		//garbage collector호출하여 openCv인식 종료.
-		//System.gc();
-		
 		return "tester/testAfter";
 	}
-	
-//	public void finalize() {
-//		log.info("OpenCv인식 종료");
-//	}
+
 
 }
