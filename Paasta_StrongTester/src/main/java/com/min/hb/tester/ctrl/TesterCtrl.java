@@ -408,16 +408,16 @@ public class TesterCtrl {
 		log.info("videolist:"+videolist);
 		
 		//인코딩 안된 마지막 영상리스트 제거
-		if (videolist.size()!=0) {
-			videolist.remove(videolist.size()-1);
-			log.info("Encoding videolist:"+videolist);
+		
+		videolist.remove(videolist.size()-1);
+		log.info("Encoding videolist:"+videolist);
 			
-			//최종 비디오 링크들 저장
-			for(Map<String, Object> video : videolist) {
-				service.InsertVideo(video);
-			}
+		//최종 비디오 링크들 저장
+		for(Map<String, Object> video : videolist) {
+			service.InsertVideo(video);
 		}
 		
+	
 		isTestEnd = true;
 		//인식종료
 		/////////////////////
