@@ -17,7 +17,6 @@ if (isSetTime){
 	$dateDisplay.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 }
 
-
 function getTestDate(){
 	
 	let dateVal = $dateDisplay.innerText;
@@ -25,6 +24,7 @@ function getTestDate(){
 	return dateVal
 	
 }
+
 function getStartTime(timeVal){
 
 	timeVal = timeVal.split(' ');
@@ -39,13 +39,10 @@ function getStartTime(timeVal){
 }
 
 function getEndTime(timeVal){
-	
 	let endTime = timeVal[2].split(':');
 	console.log(endTime, 'endTime return');
 	return endTime;
 }
-
-
 
 /* Timer */
 var nowTime = new Date();
@@ -80,8 +77,8 @@ let testStart = false;
 setInterval(function timer() {
 	  var nowTime = new Date();
 	  var diff = startTime.getTime() - nowTime.getTime();
-	  
 	  let time = leftTimeCalculate(diff);
+	  
 	  $loginBtn.value = `${time} 후 시작`;
 	  
 	  if (!isSetTime){
@@ -112,15 +109,15 @@ function isTestEnd(){
 	return true;
 }
 
-	let timerInter = setInterval(function () {
-		if(testStart && isTestEnd()){ // 시험 끝 입장불가
-			 clearInterval(timerInter);
-			 $loginBtn.disabled = true;
-			   $loginBtn.classList.add('disabled');
-			   $loginBtn.classList.remove('active');
-			   $loginBtn.value = '시험 종료';
+let timerInter = setInterval(function () {
+	if(testStart && isTestEnd()){ // 시험 끝 입장불가
+	   clearInterval(timerInter);
+       $loginBtn.disabled = true;
+	   $loginBtn.classList.add('disabled');
+	   $loginBtn.classList.remove('active');
+	   $loginBtn.value = '시험 종료';
 		}
-	}, 1000);
+}, 1000);
 
 /* get EndTime List*/
 function getEndDiff(){
