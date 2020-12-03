@@ -75,34 +75,28 @@ function leftTimeCalculate(millisec) {
   return minutes + "분 " + seconds + "초";
 }
 
-
 let testStart = false;
-console.log(startTime);
-let timer = setInterval(function () {
 
-  var nowTime = new Date();
-  var diff = startTime.getTime() - nowTime.getTime();
-  
-  let time = leftTimeCalculate(diff);
-  $loginBtn.value = `${time} 후 시작`;
-  
-  if (!isSetTime){
-	  $loginBtn.value = '입장 불가';
-	  clearInterval(timer);
-  }
-  else if (diff <= 0) { // 시험 시작 시간이 지나면
-    clearInterval(timer);
-    $loginBtn.value = '시험 입장';
-    //isTestEnd();
-    
-    //timerEnd();
-    testStart = true;
-  }
-  else{
-  }
-}, 1000);
-
-
+setInterval(function timer() {
+	  var nowTime = new Date();
+	  var diff = startTime.getTime() - nowTime.getTime();
+	  
+	  let time = leftTimeCalculate(diff);
+	  $loginBtn.value = `${time} 후 시작`;
+	  
+	  if (!isSetTime){
+		  $loginBtn.value = '입장 불가';
+		  
+		  clearInterval(timer);
+	  }
+	  else if (diff <= 0) { // 시험 시작 시간이 지나면
+	    clearInterval(timer);
+	    $loginBtn.value = '시험 입장';
+	    testStart = true;
+	  }
+	  
+	  return timer;
+	}(), 1000);
 
 /* Check isTestEnd */
 function isTestEnd(){
@@ -111,31 +105,22 @@ function isTestEnd(){
    //console.log(diff);
 	if (diff >= 0){ // 입장 가능
 		$loginBtn.disabled = false;
-//		$loginBtn.removeAttribute('disabled');
 		   $loginBtn.classList.add('active');
 		   $loginBtn.classList.remove('disabled');
-		   //console.log('false');
 		 return false;
 	}
 	return true;
 }
 
 	let timerInter = setInterval(function () {
-
 		if(testStart && isTestEnd()){ // 시험 끝 입장불가
 			 clearInterval(timerInter);
 			 $loginBtn.disabled = true;
 			   $loginBtn.classList.add('disabled');
 			   $loginBtn.classList.remove('active');
+			   $loginBtn.value = '시험 종료';
 		}
 	}, 1000);
-	
-
-
-
-
-
-
 
 /* get EndTime List*/
 function getEndDiff(){
@@ -145,7 +130,7 @@ function getEndDiff(){
   let endTimeList = [testDate[0], testDate[1], testDate[2], endTimeVal[0], endTimeVal[1]];
   let endTime = new Date(`${monthDic[testDate[1]]} ${testDate[2]}, ${testDate[0]} ${endTimeVal[0]}:${endTimeVal[1]}:00`);
   let diff = endTime.getTime() - nowTime.getTime();
- // console.log(nowTime.getTime());
+
   return diff;
 }
 
