@@ -123,8 +123,6 @@ public class TesterCtrl {
 		
 		// 저장 타이머
 		r_timer = new Timer();
-		
-
 		TimerTask r_task = new TimerTask() {
 			
 			@Override
@@ -139,6 +137,7 @@ public class TesterCtrl {
 					m_timer.cancel();
 					capture.release();
 					writer.release();
+					
 					if (capture.isOpened()) {
 			            System.out.println("Camera is running!");
 			        }
@@ -193,6 +192,10 @@ public class TesterCtrl {
 			public void run() {
 				// TODO Auto-generated method stub   
 				while (capture.read(frame)) {
+					if (frame.empty()) {
+		                System.err.println("--(!) No captured frame -- Break!");
+		                break;
+		            }
 					writer.write(frame);
 					detectFace(frame,faceCascade);
 				}   
