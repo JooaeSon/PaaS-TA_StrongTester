@@ -292,8 +292,6 @@ public class TesterCtrl {
 		response.setContentType("text/html; charset=UTF-8");
 
 		PrintWriter out = response.getWriter();
-		//StudentInfoDto mDto = service.TestLogin(sdto);
-
 
 		String student_code=sdto.getStudent_code(); //나중에 session객체로 받아오기
 		String student_name=sdto.getStudent_name();
@@ -310,9 +308,8 @@ public class TesterCtrl {
 			session.setAttribute("student_name", student_name);
 			session.setAttribute("student_uuid", student_uuid);
 			log.info("Welcome TestStart.do 시험응시 여부 확인 : \t {}");
-			//log.info("Welcome TestStart.do 시험응시 여부 확인 : \t {}", session.getAttribute("stdInfo"));
+			
 			//IP
-			//ChkIp(req, student_code);
 			//아래 ip는 테스트 용입니다.
 			//"172.30.1.9"
 			String stdIP=ChkIp(req, student_code);
@@ -333,7 +330,6 @@ public class TesterCtrl {
 			//<웹캠이 켜지는 순간>
 			System.out.println("인식시작");
 			nu.pattern.OpenCV.loadShared();
-			//new ObjectDetection();
 			nu.pattern.OpenCV.loadLocally();
 			System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);         
 			new TesterCtrl().run();
@@ -364,9 +360,6 @@ public class TesterCtrl {
 
 		Map<String, Object> answermap = new HashMap<String, Object>();
 		Map<String, Object> map = new HashMap<String, Object>();
-
-		//session.getAttribute("stdInfo");
-		//StudentInfoDto sdto=new StudentInfoDto();
 
 		String student_code=(String) session.getAttribute("student_code");
 		answermap.put("student_code", student_code);
@@ -423,13 +416,8 @@ public class TesterCtrl {
 		for(Map<String, Object> video : videolist) {
 			service.InsertVideo(video);
 		}
-		isTestEnd = true;
 		//인식종료
-		/////////////////////
-		//r_timer.cancel();
-		//m_timer.cancel();
-		//capture.release();
-		/////////////////////
+		isTestEnd = true;
 		//세션 제거
 		if(session.getAttribute("student_code") !=null) {
 			log.info("session 제거 완료");
