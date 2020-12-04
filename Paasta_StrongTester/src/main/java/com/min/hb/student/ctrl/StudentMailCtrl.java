@@ -1,7 +1,6 @@
 package com.min.hb.student.ctrl;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -109,8 +108,6 @@ public class StudentMailCtrl {
             //학생들 개인 정보 가져오기
             StudentInfoDto mailInfo = service.MailBasicInfo(student_code);
             this.key=mailInfo.getStudent_uuid();
-            InetAddress local = InetAddress.getLocalHost();
-            String ip = local.getHostAddress();
 
             String content = "안녕하세요."+mailInfo.getStudent_name()+"님은 이번 STRONG TESTER에서 시험을 응시하게 되었습니다. <br><br>"
                   + "<div style='font-size:15px; text-align:center; border:1px solid #ccc; padding:10px;'>"
