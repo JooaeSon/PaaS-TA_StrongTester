@@ -97,7 +97,7 @@ public class TesterCtrl {
 	public void run() {
 		log.info("run, let's Start!!!");
 		String[] args= {""};
-		String filenameFaceCascade = args.length > 2 ? args[0] : "C:\\HappyBugs\\git\\Paasta_StrongTester\\Paasta_StrongTester\\add_first.xml";
+		String filenameFaceCascade = args.length > 2 ? args[0] : "C:\\HappyBugs\\git\\Paasta_StrongTester\\Paasta_StrongTester\\addc.xml";
 		int cameraDevice = args.length > 2 ? Integer.parseInt(args[2]) : 0;
 		CascadeClassifier faceCascade = new CascadeClassifier();
 
@@ -303,7 +303,8 @@ public class TesterCtrl {
 		log.info("student_code:>>>>>>>>>>>>>"+student_code
 				+" student_name:>>>>>>"+student_name+"student_uuid:>>>>>"+student_uuid);
 		//시험을 아직 응시 하지 않은 학생일 경우
-		if("N".equalsIgnoreCase(service.ChkTestFlag(student_code))) {
+		if("N".equalsIgnoreCase(service.ChkTestFlag(student_code))
+				||"Y".equalsIgnoreCase(service.ChkTestFlag(student_code))) {
 			//session.setAttribute("stdInfo", mDto);
 			//세션 담기
 			session.setAttribute("student_code", student_code);
