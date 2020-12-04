@@ -25,10 +25,9 @@ $selectAll.addEventListener("change", () => {
   }
 });
 
-// email
+/* email */
 const $sendBtn = document.querySelector("#sendE");
 $sendBtn.addEventListener("click", () => {
-  // 전송버튼 클릭시 checkbox의 checked가 true인것의 value를 가져옴
   let stdArray = [];
   $checkboxList.forEach((v, i) => {
     if ($checkboxList[i].checked == true) {
@@ -41,15 +40,13 @@ $sendBtn.addEventListener("click", () => {
 
 
 function sendEmail(stdArray) {
-//  console.log(stdArray);
-  // stdArray = ["20162579", "20162623", "20162625"];
   var std_code = {
     "std_list": stdArray,
   };
   std_code = JSON.stringify(std_code);
   $.ajax({
     url: "./sendmail.do",
-    data: std_code, // 학번을 post로 전달
+    data: std_code, 
     contentType: "application/json; charset=utf-8;",
     type: "POST",
     dataType: "json",
@@ -61,7 +58,6 @@ function sendEmail(stdArray) {
       }
     },
     error: function () {
-      //alert("오류", "잘못된 요청입니다.");
     },
   });
 }
@@ -72,18 +68,14 @@ function checkIt(stdCode){
    showInfo(stdCode);
 }
 function showInfo(stdNumber) {
-       //전달할 폼 영역
          var frm = document.getElementById("frm");
          frm.action = "./studentDetailView.do";
            $.ajax({
                 url: "./selectDetail.do",
-                data: "student_code=" + stdNumber, // 학번을 post로 전달
+                data: "student_code=" + stdNumber, 
                 type:"post",
                 success: function (msg) {
-                    //alert("학번전송", "인증키 전송 성공");
-                    //alert(msg.student_code);
                     frm.stdId.value=msg.student_code;
-                    //frm.submit();
                 },
                 error: function () {
                   alert("오류", "잘못된 요청입니다.");
@@ -109,13 +101,7 @@ function limitStdNum(input){
 	}
 }
 
-// 학생 추가
-$addBtn.addEventListener('click', ()=>{
-  //alert($stdNumInput.value +$stdMajorInput.value+ $stdNameInput.value+$stdEmailInput.value);
-
-});
-
-// 시간설정 - 모달 열기
+/* 시간 설정 */
 const $setTimeBtn = document.querySelector('#set-time__button');
 const $modal = document.querySelector('.modal');
 $setTimeBtn.addEventListener('click', () => {
@@ -123,18 +109,16 @@ $setTimeBtn.addEventListener('click', () => {
 	getCurrentTime();
 });
 
-//모달 닫기
 const $closeBtn = document.querySelector('#close__button');
 $closeBtn.addEventListener('click', () => {
   $modal.style.display = 'none';
 });
 
-//시간설정후 확인 
 const $confirmTimeBtn = document.querySelector('#confirm-time__button');
 const $startTime = document.querySelector('#start-time');
 const $endTime = document.querySelector('#end-time');
 
-// 현재 시간 값을 가져옴
+/* 현재 시간 값을 가져옴 */
 function getCurrentTime(){ 
 	let now = new Date();
 	let nowYear = now.getFullYear();
@@ -162,7 +146,6 @@ function timeValid(){
 	if(curTime[1] != startDate[1] && curTime[2] != startDate[2]){
 		return true
 	}
-	
 	
 	// 날짜확인
 	if (startTime[0] < curTime[3] || (startTime[0] === curTime[3] && startTime[1] < curTime[4])) {

@@ -10,7 +10,6 @@ function ajax() {
     $questionList.forEach((v, i) => {
       $questionList[i].innerText = obj.questions[i];
       $correctAnswerList[i].innerText = obj.correctAnswers[i];
-//      $correctAnswerList[i].innerText = obj.correctAnswers[i];
     });
   });
   oReq.open("GET", "./js/question-json.txt"); // key
