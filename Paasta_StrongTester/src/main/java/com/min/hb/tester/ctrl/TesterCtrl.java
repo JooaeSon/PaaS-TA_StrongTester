@@ -119,7 +119,7 @@ public class TesterCtrl {
 		int fourcc = VideoWriter.fourcc('m', 'p', '4', 'v');
 		writer= new VideoWriter();
 		Size frameSize = new Size((int) capture.get(Videoio.CAP_PROP_FRAME_WIDTH),(int) capture.get(Videoio.CAP_PROP_FRAME_HEIGHT));
-		
+		log.info("인식의 끝");
 		
 		// 저장 타이머
 		r_timer = new Timer();
@@ -137,7 +137,6 @@ public class TesterCtrl {
 					m_timer.cancel();
 					capture.release();
 					writer.release();
-					
 					if (capture.isOpened()) {
 			            System.out.println("Camera is running!");
 			        }
@@ -183,7 +182,7 @@ public class TesterCtrl {
 			}   
 		};
 		r_timer.schedule(r_task, 2000,8000); 
-
+		
 		//인식
 		//*
 		m_timer = new Timer();
