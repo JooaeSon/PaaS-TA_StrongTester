@@ -4,6 +4,7 @@ SELECT * FROM STUDENT;
 SELECT * FROM STUDENTCAPTURE;
 SELECT * FROM STUDENTANSWER order by student_code;
 
+delete from student;
 update tester set TEST_START=null , TEST_END=null;
 
 select student_uuid from student where STUDENT_CODE='20162579';

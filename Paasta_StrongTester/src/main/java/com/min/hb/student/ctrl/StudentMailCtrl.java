@@ -118,7 +118,7 @@ public class StudentMailCtrl {
                   + "학과:"+mailInfo.getStudent_deptm()+"<br>"
                   + "학번:"+mailInfo.getStudent_code()+"<br>"
                   + "인증 코드: [ " + key + " ] <br>"
-                  + "시험 링크: <a href='http://"+ip+":8088/Paasta_StrongTester/tester.do'> http://localhost:8088/StrongTester/tester.do</a>"
+                  + "시험 링크: <a href='http://strongtester.paas-ta.org/tester.do'> http://strongtester.paas-ta.org/tester.do</a>"
                   + "<br></div>"
                   + "****시험코드는 본인이 응시하는 과목과 맞는지 <br>"
                   + "확인해 주시고 인증코드는 정확하게 입력해주세요"
