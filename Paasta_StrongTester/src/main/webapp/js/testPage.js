@@ -11,7 +11,7 @@ const $questionAnswer = document.querySelector("#answer1");
 const $questionNode = document.querySelector("#question");
 const $questions = document.querySelectorAll(".question__list__item");
 const $questionNumber = document.querySelector("#question__number");
-//displayQuestion();
+
 
 
 /* 뒤로 가기 버튼 시 */
@@ -39,13 +39,7 @@ if (!localStorage.getItem("isFirstVisit")) {
   }
 }
 
-/*
-$answer.addEventListener("keydown", () => {
-  $questions[curPos].classList.add("active");
-});
 
- * *
- */
 
 /* 임시 저장 알림 */
 $saveBtn.addEventListener("click", () => {
