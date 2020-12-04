@@ -12,7 +12,7 @@
    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
    rel="stylesheet" />
 <script src="./js/testCam.js" defer> </script>
-<script src="./js/test.js"></script>
+
 <style>
 body {
   margin: 0;
