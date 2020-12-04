@@ -13,6 +13,26 @@
    rel="stylesheet" />
 <script src="./js/testCam.js" defer> </script>
 <script src="./js/test.js"></script>
+<style>
+body {
+  margin: 0;
+  font-family: "Open Sans", san-serif;
+  cursor: default;
+}
+#summit_input{
+  background-color: #2d82fe; 
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  color: white;
+  padding: 0;
+  margin: 10px;
+  border: none;
+  
+}
+input{border: none;
+padding: 0;}
+</style>
 </head>
 
 <body>
