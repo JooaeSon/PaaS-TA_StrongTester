@@ -97,7 +97,7 @@ public class TesterCtrl {
 	public void run() {
 		log.info("run, let's Start!!!");
 		String[] args= {""};
-		String filenameFaceCascade = args.length > 2 ? args[0] : "C:\\HappyBugs\\git\\Paasta_StrongTester\\Paasta_StrongTester\\frontalface_alt.xml";
+		String filenameFaceCascade = args.length > 2 ? args[0] : "C:\\HappyBugs\\git\\Paasta_StrongTester\\Paasta_StrongTester\\add_first.xml";
 		int cameraDevice = args.length > 2 ? Integer.parseInt(args[2]) : 0;
 		CascadeClassifier faceCascade = new CascadeClassifier();
 
