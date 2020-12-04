@@ -13,14 +13,13 @@
 <link rel="stylesheet" href="./css/testPage.css" />
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://kit.fontawesome.com/12ed482fdd.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/12ed482fdd.js" ></script>
 <script src="./js/testPage.js" defer></script>
 <script type="text/javascript">
  window.history.forward();
  function noBack(){window.history.forward();}
 </script>
-<body oncontextmenu="return false" ondragstart="return false"
-	onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false">
 	<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 	<nav id="navbar">
 		<h2 id="title__nav">과목명: 인공지능</h2>
