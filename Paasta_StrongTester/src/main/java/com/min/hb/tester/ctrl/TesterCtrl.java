@@ -143,6 +143,7 @@ public class TesterCtrl {
 			        else {
 			            System.out.println("Camera closed!");
 			        }
+					//System.out.println("Videoio::"+Videoio.CAP_MSMF);
 					System.out.println("종료뿡");
 				}
 				else if (count==0) {      
