@@ -328,11 +328,11 @@ public class TesterCtrl {
 			
 			///////////////
 			//<웹캠이 켜지는 순간>
-			System.out.println("인식시작");
-			nu.pattern.OpenCV.loadShared();
-			nu.pattern.OpenCV.loadLocally();
-			System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);         
-			new TesterCtrl().run();
+//			System.out.println("인식시작");
+//			nu.pattern.OpenCV.loadShared();
+//			nu.pattern.OpenCV.loadLocally();
+//			System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);         
+//			new TesterCtrl().run();
 		
 			return "tester/testPage";
 
@@ -409,12 +409,13 @@ public class TesterCtrl {
 		
 		
 		//인코딩 안된 마지막 영상리스트 제거
-		//videolist.remove(videolist.size()-1);
 		log.info("Encoding videolist:"+videolist);
 			
 		//최종 비디오 링크들 저장
-		for(Map<String, Object> video : videolist) {
-			service.InsertVideo(video);
+		if (videolist != null) {
+			for(Map<String, Object> video : videolist) {
+				service.InsertVideo(video);
+			}
 		}
 		//인식종료
 		isTestEnd = true;
