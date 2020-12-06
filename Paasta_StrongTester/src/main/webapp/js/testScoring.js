@@ -1,7 +1,7 @@
 const $questionList = document.querySelectorAll(".question__content");
 const $correctAnswerList = document.querySelectorAll(".answer-correct__text");
 ajax();
-console.log($correctAnswerList);
+//console.log($correctAnswerList);
 //문제 불러오기
 function ajax() {
   var oReq = new XMLHttpRequest();
