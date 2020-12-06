@@ -40,7 +40,7 @@ function getStartTime(timeVal){
 
 function getEndTime(timeVal){
 	let endTime = timeVal[2].split(':');
-	console.log(endTime, 'endTime return');
+//	console.log(endTime, 'endTime return');
 	return endTime;
 }
 

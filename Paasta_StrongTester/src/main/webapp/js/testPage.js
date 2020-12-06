@@ -234,7 +234,7 @@ function ajaxExample() {
     dataType: "json",
     success: function (data) {
        if(data.isc=="true"){
-           alert("완료!");
+//           alert("완료!");
            location.href="./testAftersummit.do";
        }else{
           alert("저장 실패");

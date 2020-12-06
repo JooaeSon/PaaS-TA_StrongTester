@@ -64,7 +64,7 @@ function sendEmail(stdArray) {
 
 
 function checkIt(stdCode){
-   alert(stdCode);
+//   alert(stdCode);
    showInfo(stdCode);
 }
 function showInfo(stdNumber) {
@@ -183,7 +183,7 @@ $confirmTimeBtn.addEventListener('click', () => {
 		  swal('','시작 시간은 종료시간 이전이어야 합니다.', 'info');
 	  }
 	  else{
-	    alert(`${year}-${month}-${day} ${startH}시 ${startM}분 ~ ${endH}시 ${endM}분`);
+//	    alert(`${year}-${month}-${day} ${startH}시 ${startM}분 ~ ${endH}시 ${endM}분`);
 	    var startTest=""+year+"-"+month+"-"+day+"T"+startH+":"+startM+"";
 	    var endTest=""+year+"-"+month+"-"+day+"T"+endH+":"+endM+"";
 	    location.href="./setTestTime.do?test_start="+startTest+"&test_end="+endTest;
